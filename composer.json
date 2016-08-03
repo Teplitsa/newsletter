@@ -1,0 +1,61 @@
+{
+    "name"        : "tst/newsletter",
+    "description" : "Teplitsa Newsletter",
+    "authors"     : [
+        {
+            "name"    : "Teplitsa",
+            "email"   : "support@te-st.ru",
+            "homepage": "http://te-st.ru/"
+        }
+    ],
+    "type"        : "project",
+    "repositories": [
+        {
+            "type": "composer",
+            "url" : "http://wpackagist.org"
+        },
+        {
+            "type": "composer",
+            "url": "http://wp-languages.github.io"
+        },
+        {
+            "type": "artifact",
+            "url": "artifacts/"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/wp-sync-db/wp-sync-db"
+        }
+        
+    ],
+    "config"      : {
+        "vendor-dir": "wp-content/vendor",
+        "secure-http" : false
+    },
+   "require"     : {
+        "composer/installers": "~1.0",  
+        "johnpbloch/wordpress" : ">=4.5",
+        "wpackagist-plugin/cyr3lat" : "@stable",
+        "wpackagist-plugin/crop-thumbnails": "@stable",
+        "wpackagist-plugin/disable-comments" : "@stable",        
+        "wpackagist-plugin/imsanity" : "@stable",        
+        "wpackagist-plugin/media-search-enhanced": "@stable",
+        "wpackagist-plugin/mailgun": "@stable",
+        "wpackagist-plugin/wysija-newsletters": "@stable",
+        "koodimonni-language/core-ru_ru": "*" 
+        
+    },
+    "require-dev" : {        
+        "wp-sync-db/wp-sync-db" : "dev-master",        
+        "wpackagist-plugin/force-regenerate-thumbnails" : "@stable",        
+        "wpackagist-plugin/disable-wordpress-updates": "@stable"
+    },
+    "extra"       : {
+        "wordpress-install-dir": "core",
+        "dropin-paths": {            
+            "wp-content/languages/": ["vendor:koodimonni-language"],
+            "wp-content/languages/plugins/": ["vendor:koodimonni-plugin-language"],
+            "wp-content/languages/themes/": ["vendor:koodimonni-theme-language"]
+        }
+    }
+}
