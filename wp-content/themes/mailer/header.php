@@ -15,11 +15,11 @@
 </head>
 
 <body id="top" <?php body_class(); ?>>
-<?php include_once(get_template_directory()."/assets/svg/svg.svg"); //all svgs ?>
+<?php //include_once(get_template_directory()."/assets/svg/svg.svg"); //all svgs ?>
 <a class="skip-link screen-reader-text" href="#site_content-a">Перейти к содержанию</a>
 
 
-<header id="site_header" class="site-header nav-init">
+<header id="site_header" class="site-header">
 	<!-- panel -->
 	<div id="logo_panel" class="logo-panel">
 		
@@ -29,31 +29,7 @@
 				<?php echo tst_site_logo('short'); ?>					
 			</a>
 		</div>
-		
-		<div class="header-title"><?php
-			$force_l = (is_singular()) ? false : 50;
-			tst_section_title($force_l);
-		?></div>
-		
-		<div class="header-options"><?php
-			$sbs = get_page_by_path('subscribe');
-			if($sbs) {
-		?><a href="<?php echo home_url('subscribe');?>" id="subscribe-trigger" class="trigger-link subscribe">Подпишись</a>
-		<?php } ?>
-			<?php $s_url = trailingslashit(home_url()).'?s='; //fallback for no JS ?>	
-			<a href="<?php echo $s_url;?>" id="search-trigger" class="trigger-button search"><?php tst_svg_icon('icon-search');?><?php tst_svg_icon('icon-close');?></a>
-		</div>
 	</div>
-	
-	<!-- search -->
-	<div id="site_search" class="site-search"><?php get_search_form();?></div>
-	
-	<!-- menu -->
-	<nav id="site_nav" class="site-nav"><span class="screen-reader-text">Главное меню</span>		
-		<?php wp_nav_menu(array('theme_location' => 'primary', 'container' => false, 'menu_class' => 'main-menu')); ?>		
-		<div class="subscribe-panel"><?php tst_get_subscribe_block('top');?></div>
-	</nav>
-	
 </header>
 
 <main id="site_content" class="site-content"><a name="site_content-a"></a>
