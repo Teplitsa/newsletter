@@ -1,0 +1,98 @@
+/** == Header styles ==*/
+
+/* Position */
+.site-header {
+	position: fixed;
+	width: 100%;
+	top: 0;
+	background: $color-white;
+	z-index: 10000;
+	box-shadow: -3px -3px 3px 0 rgba(0, 0, 0, 0.19),
+				 3px 0 3px 0 rgba(0, 0, 0, 0.19),
+				 0 3px 3px 0 rgba(0, 0, 0, 0.23);
+		
+	body.admin-bar & {
+		@media screen and (min-width: 600px) { top: $adminbar_small_screen; }
+		@media screen and (min-width: 783px) { top: $adminbar_large_screen; }
+	}
+}
+
+
+
+/* Logo panel */
+.logo-panel {
+	@include clearfix;
+	padding: $gut/4 0;
+	@include for(small-screens){
+		padding: $gut/2 0;
+	}
+	
+	@include upto(medium-screens) { @include transition(background 1s);	  }
+	@include for(medium-screens)  { @include transition(background 0.4s); }
+	
+	a { @include nav-text(); }
+}
+
+
+// columns layout
+.header-logo { //left
+	float: left;
+	min-height: 1px;
+	padding-left: $header_inner_height + $gut;
+	padding-right: $header_inner_height + $gut; // == trigger-button	
+	width: 100%;
+		
+	@include for(small-screens) {
+		@include calc(width, "100% - 108px");		
+	}
+		
+	@include for(medium-screens) {		
+		width: 238px;
+		padding-right: 0;
+	}	
+}
+
+
+
+
+// logo
+.site-logo {
+	display: block;	
+	height: $header_inner_height;	
+}
+
+.icon-logo { // teplitsa logo as picture
+	height: $header_inner_height - 4px;
+	width: 172px;
+	fill: #fff;
+	@include transition(all 0.35s);
+	margin-top: 2px;
+	
+	&:hover {
+		fill: rgba(0,0,0, 0.5);		
+	}
+	
+	@include for(small-screens) {
+		height: $header_inner_height;
+		margin-top: 0;
+	}
+}
+
+/*  panel elements */
+.logo-panel {
+	background: $home_page_green;
+	border-color: $home_page_green;
+	color: $color-white;
+	
+	a { color: $color-white; }
+	.svg-icon {	fill: rgba(255,255,255, 1); }
+	
+	.site-logo:hover,
+	.site-logo:focus,
+	.site-logo:active {
+		.svg-icon {	fill: rgba(255,255,255, 0.75); }	
+	}
+	
+}
+
+	

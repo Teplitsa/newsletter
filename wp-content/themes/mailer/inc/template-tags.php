@@ -93,12 +93,9 @@ function is_posts() {
 function tst_site_logo($size = 'regular') {
 
 	switch($size) {
-		case 'regular':
+		case 'fixed':
 			$file = 'pic-logo';
-			break;
-		case 'small':
-			$file = 'pic-logo-small';
-			break;	
+			break;			
 		default:
 			$file = 'icon-logo';
 			break;	

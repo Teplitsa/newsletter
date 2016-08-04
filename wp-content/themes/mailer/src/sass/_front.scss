@@ -1,0 +1,77 @@
+/*---------------------------------------------------------
+ Global Layout (_front.scss)
+-------------------------------------------------------- */
+html {
+	//font-size: 62.5%; //10px
+	background-color: $color-white;	
+}
+body {
+	background-color: $color-white;
+	text-rendering: optimizeLegibility;		
+	@include body-text();
+	
+	& > svg { display: none; }
+	
+	//header room
+	padding-top: $header_inner_height + $gut;
+	
+	@include for(medium-screens) {
+		padding-top: $header_inner_height*3 + $gut;
+	}
+}
+
+a {
+	text-decoration: none;
+	color: $color-text;
+	&:visited { color: $color-text; }	
+}
+
+p {
+	&:last-child { margin-bottom: 0; }	
+}
+
+p,ul,ol,dl,blockquote {
+	@extend .break;
+}
+
+.svg-icon, .svg-pic {
+	display: inline-block;
+}
+
+//title with normal weights
+h1, h2, h3, h4, h5, h6 {
+	font-weight: normal;
+}
+
+
+/** == Page structure == **/
+
+.container { // in sections
+	width: 92%;
+	max-width: $site_cont;
+	margin: 0 auto;
+}
+
+.tpl-page {
+	min-height: 70vh;
+	
+	.entry-title {
+		@include header-title(large_title);
+		line-height: 1.2;
+		margin-bottom: $gut;
+		text-align: center;
+	}
+}
+
+
+/** Footer == **/
+.site-footer {	
+	
+}
+
+.footer-content {
+	border-top: 1px solid $color-border-light;
+	padding-top: $gut/2;
+	text-align: center;
+	@include nav-text();
+}

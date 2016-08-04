@@ -13,8 +13,8 @@ $qo = get_queried_object();
 	<div class="container">
 		
 		<?php foreach($wp_query->posts as $i => $p){ ?>
-			<article class="tpl-post">
-				<h4><?php echo apply_filters('tst_the_title', get_the_title($p)); ?></h4>
+			<article class="tpl-page">
+				<h4 class="entry-title"><?php echo apply_filters('tst_the_title', get_the_title($p)); ?></h4>
 				<div class="entry-content"><?php echo apply_filters('the_content', $p->post_content); ?></div>
 			</article>
 		<?php } ?>

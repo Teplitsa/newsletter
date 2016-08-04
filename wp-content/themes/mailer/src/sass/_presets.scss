@@ -1,0 +1,697 @@
+/*---------------------------------------------------------
+ Presets (_presets.scss)
+-------------------------------------------------------- */
+/*
+font-family: 'FF DIN Pro Medium'
+font-family: 'FF DIN Pro'
+font-family: 'FF DIN Pro Cond Bold'
+font-family: 'FF DIN Pro Cond Medium'
+
+font-family: 'DIN 2014 Narrow Demi'
+font-family: 'DIN 2014'
+font-family: 'DIN 2014 Narrow Bold'
+font-family: 'DIN 2014 Demi'
+ */
+
+//Fonts
+$sans:               DIN2014-Regular, 'DIN 2014', Helvetica Neue,Helvetica,sans-serif;
+$body:				 Georgia,Times,Times New Roman,serif;
+$heading:            DIN2014-NarrowDemi, 'DIN 2014 Narrow Demi', TimesNewRoman,Times New Roman,Times,serif;
+$title:              DIN2014-Demi, 'DIN 2014 Demi', Trebuchet MS,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Tahoma,sans-serif;
+$nav:                DIN2014-Regular, 'DIN 2014', Helvetica Neue,Helvetica,Arial,sans-serif;
+$mono: 				 "Lucida Sans Typewriter", "Lucida Console", Monaco, monospace;
+$sans-cond:          FFDINWebProCondBold, 'FF DIN Pro Cond Bold', "HelveticaNeue-CondensedBold", "Helvetica Neue", Helvetica Neue, Helvetica,sans-serif;
+
+#mfPreviewBar { display: none !important; }
+
+//Break points
+$one: 	       480px; //small
+$two:          767px; //medium
+$three:	       984px; //large
+$four:         1200px; //exlarge
+$five:         1400px; //single-exlarge
+
+//Page layout
+$page_cont:      1136px;
+$page_cont_semi: 984px; //page cont limit in 1280px for single
+$col:		     52px;
+$gut:	         32px;
+
+//Grid settings
+$site_cont:    700px;
+$site_col:     71px;
+$site_gut:     $gut/2;
+
+
+//Baseline
+$base: 24px;
+
+//Sections
+$sections: (ngos, technologies, education, tools, events, teplitsa);
+
+// Color
+$tst_color: (
+	blue:   #26A1DA,
+	grey:   #A0C9CC,
+	dblue:  #213A8F,
+	rose:   #E6005B,
+	orange: #F38D06,
+	canary:	#AEDC00,
+	green:  #32b945	
+);
+
+@function tst_color($key) {
+	@if map-has-key($tst_color, $key) {
+		@return map-get($tst_color, $key);
+	}
+
+	@warn "Unknown '#{$key}' in $tst_color.";
+	@return null;
+}
+
+$section_color: (
+	ngos:         tst_color(blue),
+	technologies: tst_color(grey),
+	education:    tst_color(rose),
+	tools:        tst_color(dblue),
+	events:       tst_color(orange),		
+	teplitsa:     tst_color(green)
+);
+
+$section_width: (
+	ngos:         90px,
+	technologies: 140px,
+	education:    152px,
+	tools:        153px,
+	events:       153px,		
+	teplitsa:     121px	
+);
+
+@function section_color($key) {
+	@if map-has-key($section_color, $key) {
+		@return map-get($section_color, $key);
+	}
+
+	@warn "Unknown '#{$key}' in $section_color.";
+	@return null;
+}
+
+@function section_width($key) {
+	@if map-has-key($section_width, $key) {
+		@return map-get($section_width, $key);
+	}
+
+	@warn "Unknown '#{$key}' in $section_width.";
+	@return null;
+}
+
+$home_page_green: section_color('teplitsa');
+
+
+
+$color-text:   rgba(0,0,0, 0.8);
+$color-white:  #ffffff;
+
+/*$color-green:      #32b945;
+$color-dark-blue:  #034462; 
+$color-blue:       #0090ed; 
+$color-orange:     #ff7820;*/
+
+$color-link-one:   #32b945;
+$color-link-two:   darken($color-link-one, 15%); 
+$color-link-three: #034462; 
+
+$color-text-black:     rgba(0,0,0, 1);
+$color-text-semi:      rgba(0,0,0, 0.6);
+$color-text-light:     rgba(0,0,0, 0.45);
+$color-secondary:      rgba(0,0,0, 0.035);
+$color-secondary-dark: #E2DED9;
+
+$color-border-normal: #cccccc;
+$color-border-light:  #e9e9e9;
+$color-border-link:   #86ED94;
+
+$color-form-invalid: #ED1C24;
+
+
+//Layout Settings
+$menu_items_num:        6;
+$header_gap:            $gut/2;
+$header_inner_height:   30px;
+$adminbar_large_screen: 32px;
+$adminbar_small_screen: 46px;
+
+//Element
+$indent: 1.55em;
+$rule: 	 1px solid $color-border-normal;
+
+
+/** Mixins **/
+
+// MQ
+@mixin for($media) {
+	@if $media == small-screens {
+		@media screen and (min-width: $one) { @content; }
+	}
+	@else if $media == medium-screens {
+		@media screen and (min-width: $two) { @content; }
+	}
+	@else if $media == large-screens {
+		@media screen and (min-width: $three) { @content; }
+	}
+	@else if $media == exlarge-screens {
+		@media screen and (min-width: $four) { @content; }
+	}
+	@else if $media == single-exlarge-screens {
+		@media screen and (min-width: $five) { @content; }
+	}
+}
+
+
+@mixin upto($media) {
+	@if $media == small-screens {
+		@media screen and (max-width: $one - 1) { @content; }
+	}
+	@else if $media == medium-screens {
+		@media screen and (max-width: $two - 1) { @content; }
+	}
+	@else if $media == large-screens {
+		@media screen and (max-width: $three - 1) { @content; }
+	}
+	@else if $media == exlarge-screens {
+		@media screen and (max-width: $four - 1) { @content; }
+	}
+	@else if $media == single-exlarge-screens {
+		@media screen and (max-width: $five - 1) { @content; }
+	}
+}
+
+// Typo
+@mixin body-text($mod: default) {
+	
+	font-family: $body;
+	color: $color-text;	
+	font-weight: normal;	
+		
+	font-size: 12px;
+	line-height: 1.45;
+	
+	@include for(medium-screens){
+		font-size: 16px;
+		line-height: 1.5;
+	}
+	
+	@if $mod == entry_p {
+		font-size: 14px;		
+		
+		@include for(medium-screens){
+			font-size: 18px;			
+		}		
+	}
+}
+
+@mixin nav-text($mod: default) {
+	$nav-text-size: 11px;
+	
+	font-family: $nav;
+	color: $color-text-semi;
+	text-transform: uppercase;
+	
+	font-size: $nav-text-size;
+	font-weight: normal;
+	line-height: 0.909;
+	letter-spacing: 0.5px;
+	
+	@if $mod == multiline {
+		line-height: 1.5;
+	}
+	@else if $mod == tags {
+		font-size: $nav-text-size*0.909;
+		line-height: 1;
+	}
+	@else if $mod == lowercase {
+		text-transform: none;
+		font-size: 1.2*$nav-text-size;
+		letter-spacing: normal;
+	}
+	@else if $mod == lowercase_bold {
+		text-transform: none;
+		font-size: 1.32*$nav-text-size;
+		letter-spacing: normal;
+		font-family: $title;
+	}
+}
+
+@mixin post-title($mod: default) {
+	$post-title-size: 20px;
+	
+	font-family: $title;
+	color: $color-text-black;
+	
+	font-size: $post-title-size;
+	font-weight: normal;
+	line-height: 1.15;
+	letter-spacing: normal;
+	text-transform: none;
+	
+	
+	@if $mod == huge_input {
+		font-size: 4.444*$post-title-size;
+	}
+	@if $mod == search_input {
+		font-size: 2*$post-title-size;
+		line-height: 1;
+	}
+	@else if $mod == small_title {
+		font-size: 0.7777*$post-title-size;		
+	}
+	@else if $mod == smaller_title {
+		font-size: 0.9*$post-title-size;
+		line-height: 1.11;
+	}
+}
+
+@mixin content-title($mod: default){
+		
+	font-family: $title;
+	color: $color-text-black;
+	font-weight: normal;
+	letter-spacing: normal;
+	text-transform: none;
+	
+	font-size: 14px;	
+	line-height: 1.3;
+	
+	@include for(medium-screens) { font-size: 18px;	}
+		
+	@if $mod == h3 {
+		font-size: 20px; //24 px		
+		@include for(medium-screens) { font-size: 24px;	}
+	}
+	@else if $mod == h4 {		
+		font-size: 16px; //24 px
+		@include for(medium-screens) { font-size: 21px;	}
+	}
+	@else if $mod == h5 {		
+		font-weight: normal;
+		text-transform: uppercase;
+		letter-spacing: 0.5px;
+	}
+	@else if $mod == light {
+		font-family: $sans;		
+		font-size: 16px; //24 px
+		@include for(medium-screens) { font-size: 21px;	}
+	}
+}
+
+@mixin crumb-title($mod: default) {
+	$crumb-title-size: 16px;
+	
+	font-family: $title;
+	color: $color-text-black;
+	font-size: $crumb-title-size;
+	font-weight: normal;
+	line-height: $header_inner_height;
+	letter-spacing: normal;
+	text-transform: none;	
+}
+
+@mixin sub-title($mod: default) {
+	$sub-title-size: 13px;
+	
+	font-family: $body;
+	font-size: $sub-title-size;
+	line-height: 1.230769;
+	color: $color-text;
+	font-weight: normal;
+	text-transform: none;
+	letter-spacing: normal;
+	text-overflow: ellipsis;
+	
+	@if $mod == small {
+		font-size: 0.923*$sub-title-size; //12px
+	}	
+}
+
+@mixin header-title($mod: default){
+	@include header-title-text($mod);
+	
+	span { display: inline-block; }
+	
+	a {
+		color: inherit;
+		font-size: inherit;
+		font-weight: inherit;
+		line-height: inherit;
+		@include transition(all 0.2s);
+		
+		&:hover, &:focus, &:active {
+			color: $color-text-light;			
+		}
+	}
+}
+
+@mixin header-title-text($mod: default){
+	$header-title-size: 26px; // 30px limit in header
+
+	font-family: $heading;
+	font-size: $header-title-size;
+	line-height: 1;
+	color: $color-text-black;	
+	text-transform: uppercase;	
+	font-weight: normal;
+	
+	
+	@if $mod == medium_title {
+		font-size: 32px;
+		
+		@include for(medium-screens) {
+			font-size: 40px;
+		}		
+	}	
+	@else if $mod == large_title { //no single pages
+		font-size: 37px; //46px
+		
+		@include for(medium-screens) {
+			font-size: 46px; //46px
+		}
+	}
+	@else if $mod == multiline {
+		line-height: 1.15;
+	}
+}
+
+//cards titles
+@mixin card-title($mod : default){	
+	
+	font-weight: normal;
+	
+	
+	@if $mod == standard {
+		font-family: $title;
+		color: $color-text-black;		
+		letter-spacing: normal;
+		
+		font-size: 16px;
+		line-height: 20px;
+		max-height: 5*20px;
+		overflow: hidden;	
+	}
+	@else if $mod == Xstandard {
+		font-family: $title;
+		color: $color-text-black;		
+		letter-spacing: normal;
+				
+		font-size: 22px;
+		line-height: 26px;
+	}
+	@else if $mod == big {
+		font-family: $body;
+		color: $color-text-black;
+		overflow: hidden;
+		font-size: 21px;
+		line-height: 24px;
+		max-height: 8*24px;
+		overflow: hidden;
+	}
+	@else if $mod == extra {
+		font-family: $sans-cond;		
+		line-height: 1;
+		color: $color-text-black;
+		text-transform: uppercase;		
+		font-stretch:condensed;	
+		letter-spacing: -0.5px;	
+		overflow: hidden;
+		
+		font-size: 36px;
+		max-height: 7*36px;
+			
+		@include for(large-screens) {
+			font-size: 40px;
+			max-height: 7*40px;
+		}
+	}
+	@else if $mod == extra_light {
+		font-family: $sans;
+		font-size: 26px;
+		line-height: 1;
+		color: rgba(0,0,0, 0.35);	
+		text-transform: uppercase;				
+		letter-spacing: normal;	
+	}
+}
+
+@mixin quote-text($mod : default){
+	$quote-text-size: 20px;
+	
+	font-family: $title;
+	color: $color-text-black;
+	
+	font-size: $quote-text-size;
+	font-weight: normal;
+	line-height: 1.4;
+	letter-spacing: normal;
+	text-transform: none;
+	
+	@if $mod == standard {
+		font-weight: normal;		
+		line-height: 1.5;
+	}
+}
+
+@mixin logo-text($size: 14px){
+	display: inline-block;
+	color: $color-text-black;
+	font-family: $sans; //test this with real fonts
+	font-weight: normal;
+	letter-spacing: normal;
+	font-size: $size;
+	line-height: $header_inner_height;	
+	text-transform: uppercase;
+	text-align: left;
+	
+	@include transition(font-size 0.35s);
+	
+	.svg-icon {
+		width: 30px;
+		height: 30px;		
+		vertical-align: top;		
+	}
+	
+	@include for(medium-screens) {
+		font-size: $size*1.5;
+	}
+}
+
+// Links
+@mixin border-link-small($size: 3px) {	
+	border-bottom: 0 solid $color-border-link;
+	box-shadow: 0 -1*$size 0 $color-border-link inset;
+	color: inherit;
+	transition: background 0.15s cubic-bezier(0.33, 0.66, 0.66, 1) 0s;
+	&:hover, &:focus, &:active {
+		background: $color-border-link;
+		color: rgba(0,0,0, 1);
+	}
+}
+
+@mixin border-link-wide($size: 3px) {	
+	border-bottom: $size solid $color-border-link;
+	box-shadow: 0 -2px 0 $color-border-link inset;
+	color: inherit;
+	transition: background 0.15s cubic-bezier(0.33, 0.66, 0.66, 1) 0s;
+	&:hover, &:focus, &:active {
+		background: $color-border-link;
+		color: rgba(0,0,0, 1);
+	}
+}
+
+@mixin subscribe-link() {	
+	display: block;
+	@include nav-text();
+	line-height: 30px;
+	vertical-align: middle;
+	positon: relative;
+	@include transition(all 0.2s);
+		
+	span {
+		color: inherit;
+		display: inline-block;
+		line-height: 1;
+		position: relative;
+		top: 2px;
+		@include transition(all 0.2s);
+	}
+	
+	.svg-icon  {
+		@include subscribe-link-icon();
+	}
+	
+	&:hover, &:focus, &:active {
+		color: $color-text-black;
+		
+		.svg-icon {
+			fill: $color-text-black;		
+		}
+	}
+}
+
+
+
+// Divs
+@mixin progressive-margin($start: 16px){
+	margin: $start 0;
+		
+	@include for(medium-screens){
+		margin: $start*1.5 0;
+	}
+	
+	@include for(large-screens){
+		margin: $start*2 0;
+	}
+}
+
+
+
+// Icons and signs
+@mixin section-icon(){
+	
+	.svg-icon {
+		width: 26px;
+		height: 26px;		
+		vertical-align: middle;
+		margin-right: 3px;
+
+		&.icon-technologies {
+			width: 22px;
+			height: 22px;
+		}
+		
+		&.icon-tools {
+			width: 22px;
+			height: 22px;
+		}
+		
+		&.icon-ngos {
+			width: 28px;
+			height: 28px;
+		}
+		
+		&.icon-education {
+			width: 30px;
+			height: 30px;
+		}
+	}
+		
+	@include sections-items-color();
+}
+
+
+@mixin subscribe-link-icon() {
+	width: 30px;
+	height: 30px;
+	margin-right: 10px;
+	line-height: 30px;
+	vertical-align: middle;
+	fill: $color-text-light;
+	pointer-events: none;
+}
+
+
+// Cards
+@mixin card-border(){
+	background: $color-white;
+    border-radius: 1px;
+    border-top: 3px solid $color-text-black;
+    box-shadow: -1px 0 2px 0 rgba(0, 0, 0, 0.12), 1px 0 2px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24);
+    margin-bottom: $gut/2;
+    position: relative;
+	
+	@each $item in $sections {	
+		&.section-#{$item} { border-top-color: section_color($item); }		
+	}
+}
+
+
+@mixin sections-items-color(){
+	@each $item in $sections {
+		.icon-#{$item}  {
+			fill: section_color($item);
+		}
+	}
+}
+
+@mixin shading-summary($max-height: 48px){
+	max-height: $max-height;
+	overflow: hidden;		
+	position: relative;
+	
+	&:after {
+		content: '';
+		display: block;		
+		height: 18px;
+		background: rgba(255,255,255, 0.5);
+		position: absolute;
+		bottom: 0;
+		right: 0;
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,ffffff+100&0+0,1+82 */
+background: -moz-linear-gradient(left,  rgba(255,255,255,0) 0%, rgba(255,255,255,1) 82%, rgba(255,255,255,1) 100%); 
+background: -webkit-linear-gradient(left,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 82%,rgba(255,255,255,1) 100%); 
+background: linear-gradient(to right,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 82%,rgba(255,255,255,1) 100%); 
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=1 );
+		width: 15%;
+		@include for(medium-screens){
+			width: 45%;
+		}
+	}
+}
+
+// Media
+@mixin caption-figure {	
+	width: 100%;
+	background: #f5f5f5;
+	text-align: center;
+	
+	img {
+		font-family: $sans;
+		font-size: 10px;
+	}
+	
+	a {
+		display: block;
+		width: 100%;	
+	}
+	
+	
+	figcaption {
+		vertical-align: middle;
+		display: block;
+		padding-top: $gut/2;
+		@include nav-text();
+		position: relative;
+		padding-left: 28px;
+		background: $color-white;
+		text-align: left;
+		
+		.svg-icon {
+			width: 16px;
+			height: 14px;
+			fill: #aaa;
+			vertical-align: inherit;
+			position: absolute;
+			left: 0;
+			top: $gut/2;
+		}
+		
+		span {
+			display: inline-block;
+			@include nav-text();
+			line-height: 1.5;			
+		}
+		
+		p { margin: 0; }		
+	}
+}
+
+
+

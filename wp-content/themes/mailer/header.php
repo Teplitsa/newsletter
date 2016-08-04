@@ -15,7 +15,7 @@
 </head>
 
 <body id="top" <?php body_class(); ?>>
-<?php //include_once(get_template_directory()."/assets/svg/svg.svg"); //all svgs ?>
+<?php include_once(get_template_directory()."/assets/svg/svg.svg"); //all svgs ?>
 <a class="skip-link screen-reader-text" href="#site_content-a">Перейти к содержанию</a>
 
 
@@ -23,10 +23,9 @@
 	<!-- panel -->
 	<div id="logo_panel" class="logo-panel">
 		
-		<div class="header-logo">
-			<a href="<?php echo home_url('sitemap');?>" id="menu_trigger" class="trigger-button menu"><?php tst_svg_icon('icon-menu'); ?><?php tst_svg_icon('icon-close');?></a>
+		<div class="header-logo">			
 			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" class="site-logo">					
-				<?php echo tst_site_logo('short'); ?>					
+				<?php echo tst_site_logo(); ?>					
 			</a>
 		</div>
 	</div>

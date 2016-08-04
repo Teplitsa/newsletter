@@ -1,0 +1,391 @@
+/** == Mixins (_utility.scss) == */
+	
+@mixin hidden { //Hide for both screenreaders and browsers
+	display: none;
+	visibility: hidden; }
+
+@mixin visuallyhidden { //Hide only visually, but have it available for screenreaders
+	position : absolute;
+	clip : rect(0 0 0 0); 
+	overflow : hidden;
+	margin: -1px;
+	padding : 0;
+	height : 1px;      
+	width : 1px;
+	border : 0; }
+
+@mixin image-replace {
+	font: 0/0 a;
+	text-shadow: none;
+	color: transparent;
+	text-decoration: none;
+}
+
+@mixin no-select {
+	-webkit-user-select: none;
+	   -moz-user-select: none;
+	   	-ms-user-select: none;
+	   		user-select: none;
+}
+
+@mixin pseudo-shape($h : 1px) {
+	content:  '';
+	display: block;
+	width: 100%;
+	height: $h;
+	position: absolute;
+}
+
+@mixin grayscale($hover : true) {
+	-webkit-filter: grayscale(1);
+	-webkit-filter: grayscale(100%);
+	-moz-filter: grayscale(100%);
+	filter: gray;	
+	filter: url("data:image/svg+xml;utf8,<svg version='1.1' xmlns='http://www.w3.org/2000/svg' height='0'><filter id='greyscale'><feColorMatrix type='matrix' values='0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0' /></filter></svg>#greyscale");
+	filter: grayscale(100%);
+	
+	@if $hover {
+		&:hover {
+			-webkit-filter: grayscale(0);
+			-webkit-filter: grayscale(0%);
+			-moz-filter: grayscale(0%);
+			filter: none;
+		}
+	}
+}
+
+
+/** == Rem (_utility.scss) == */
+
+$em-base: 10px;
+$baseline-px: 10px;
+
+@mixin rem($property, $px-values) {
+	// Convert the baseline into rems
+	$baseline-rem: $baseline-px / 1rem;
+	// Print the first line in pixel values
+	#{$property}: $px-values;
+	// If there is only one (numeric) value, return the property/value line for it.
+	@if type-of($px-values) == "number" {
+		#{$property}: $px-values / $baseline-rem; }
+	@else {
+		// Create an empty list that we can dump values into
+		$rem-values: unquote("");
+		@each $value in $px-values {
+			// If the value is zero, return 0
+			@if $value == 0 {
+				$rem-values: append($rem-values, $value); }
+			@else {
+				$rem-values: append($rem-values, $value / $baseline-rem); } }
+		// Return the property and its list of converted values
+		#{$property}: $rem-values; }
+}
+
+
+
+/** ==  Helpers (_utility.scss) and WP Classes **/
+.screen-reader-text {	
+	position: absolute !important;
+	height: 1px;
+	width: 1px; 
+	overflow: hidden;	
+	clip: rect(1px, 1px, 1px, 1px);
+	border: 0 none;
+	padding: 0;
+}
+
+img.wp-smiley {
+	margin-bottom: 0; //reset
+	margin-top: 0; //teset
+	padding: 0; //reset
+	border: none;
+}
+
+/* text alignment */
+.text-left   {
+	text-align: left; }
+
+.text-right  {
+	text-align: right; }
+
+.text-center {
+	text-align: left; }
+
+
+/* utilities */
+.clear {
+	clear: both; }
+	
+.cf {
+	@include clearfix; }
+
+.ir {
+	@include image-replace; }
+
+.hidden {
+	@include hidden; } 
+
+.visuallyhidden {
+	@include visuallyhidden; }
+
+.invisible { //Hide visually and from screenreaders, but maintain layout
+	visibility: hidden; }
+
+.break {
+	word-break: break-word;
+	word-wrap: break-word; }
+
+	
+/* selections */
+a {
+	-webkit-tap-highlight-color: transparentize($color-border-link, 0.5);
+} 
+
+::-webkit-selection { 
+	background : tst_color(green); 
+	color : $color-white; 
+	text-shadow : none; }
+
+::-moz-selection { 
+	background : tst_color(green); 
+	color : $color-white; 
+	text-shadow : none; }
+
+::selection { 
+	background : tst_color(green); 
+	color : $color-white; 
+	text-shadow : none; }
+
+
+
+/** == Post content elements == **/
+$margin-base: 16px;
+
+@mixin content-elements {
+	
+	//titles
+	h2, h3 {
+		@include content-title(h3);
+		margin: 1.5em 0 $margin-base/2;		
+	}
+	
+	h4 { 
+		@include content-title(h4);
+		margin: 1.5em 0 $margin-base/2;
+		line-height: 1.3;
+	}
+	
+	h5 {
+		@include content-title(h5);
+		margin: $margin-base 0 $margin-base/2;
+	}
+	
+	h6 {
+		@include content-title();
+		margin: $margin-base 0 $margin-base/2;
+	}
+	
+	p, li, h4, h3, h5, h6 {
+		-ms-hyphens: auto; 
+		-moz-hyphens: auto; 
+		-webkit-hyphens: auto; 
+		hyphens: auto;
+		
+		a {			
+			@include border-link-small();
+			color: $color-text !important;
+		}
+	}
+	
+	p, h4, h3, h5, h6{
+		&:first-child { margin-top: 0; }
+	}
+	
+	p, iframe, blockquote {
+		margin-bottom: $margin-base;			
+	}
+	
+	figure, .pw_map-wrap {
+		margin: $margin-base*2 0;
+		&:last-child { margin-bottom: 0; }
+		&:first-child { margin-top: 0; }
+	}
+	
+	figure + figure, 
+	h3 + figure,
+	h4 + figure,
+	h5 + figure,
+	h6 + figure {
+		margin-top: $margin-base; 
+	}
+	
+	//code
+	pre {
+		margin: $margin-base 0;
+	}
+	
+	// Lists 
+	ul {
+		margin: $margin-base 0 $margin-base 1.5em;
+		
+		li {
+			position: relative;
+			padding-left: 20px;
+			
+			&:before {
+				content: '–';
+				color: #000;
+				display: inline-block;
+				line-height: inherit;
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+			
+			li {
+				padding-left: 0;
+				&:before { display: none; }
+			}
+		}
+	}
+   
+	ul ul { list-style: circle; }
+	ul ul ul { list-style: square; }
+   
+	ol {
+	   list-style: decimal;
+	   margin: $margin-base 0 $margin-base 1.5em;
+	}
+   
+	ol ol { list-style: lower-alpha; }
+	ol ol ol { list-style: lower-roman; }
+   
+	ul ul,
+	ul ol,
+	ol ul,
+	ol ol {
+	   margin-bottom: 0;
+	}
+   
+	li {
+		margin-bottom: $margin-base/2;		
+		&:last-child { margin-bottom: 0; }
+		&:first-child { margin-top: $margin-base/2;}
+	}
+	
+	ul + p,
+	ol + p { margin-top:  $margin-base }
+	
+	blockquote {
+		@include quote-text(standard);
+		border-left: 3px solid $color-text-light;
+		padding-left: $gut/2;
+		margin: $gut 0;
+		
+		@include for(medium-screens){
+			margin-left: $gut;
+		}
+		
+		strong, b { font-weight: normal; }
+		em, i { font-style: normal; }
+		
+		&.vrez {
+			@include quote-text();
+			border-top: 3px solid $color-text-light;
+			border-bottom: 1px solid $color-border-light;
+			border-left: none;
+			padding: $gut/2 0;
+			width: 45%;
+			margin: $gut $gut+$margin-base $gut 0;
+			float: left;
+		}
+	}
+	
+	hr {
+		border: none;
+		border-top: 1px solid $color-border-light;
+		width: 100%;
+		height: 0;
+		margin: $margin_base 0;
+	}
+	
+	//fixes for embed and object
+	embed, object {
+		display: none;
+		&.force { display: block; }
+	}
+	
+	//issuu
+	.issuuembed {
+		width: 100% !important;		
+		min-height: 300px;		
+		display: block;
+		margin-bottom: $margin_base;
+		&:last-child { margin-bottom: 0; }
+		object { display: block; }
+	}
+	
+	iframe[src *= "issuu.com"] {
+		min-height: 300px;
+		max-width: 640px;
+	}
+	
+	.issuu-error {
+		padding: $gut;
+		background: $color-secondary;
+		text-align: center;
+		@include nav-text(multiline);
+	}
+	
+	//broken images
+	img[alt] {		
+		height: auto;		
+		position: relative;
+		min-height: 36px;
+		max-width: 100%;
+		display: inline-block;
+		
+		&:after {
+			content: "⚠" " Изображение недоступно";
+			text-align: center;
+			font-family: $sans;
+			font-size: 10px;
+			line-height: 12px;
+			padding-top: 12px;
+			
+			display: block;
+			position: absolute;
+			z-index: 2;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: #f5f5f5;			
+			border-radius: 3px;
+		}
+		
+	}
+	
+	img.no-img {
+		height: 36px; //fix for safary
+	}
+	
+	//content: "⚠" " " attr(alt);
+} //mixin
+
+.entry-content {
+	@include body-text(entry_p);
+	@include content-elements();	
+}
+
+
+.wp-caption {
+	margin-bottom: $margin-base*2;
+	&:last-child { margin-bottom: 0; }
+	
+	@include caption-figure();
+}
+
+.bordered-link {
+	@include border-link-small();
+}

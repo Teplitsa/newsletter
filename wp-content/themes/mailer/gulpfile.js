@@ -14,7 +14,6 @@ var es          = require('event-stream'),
     bourbon     = require('node-bourbon'),
     path        = require('relative-path'),
     runSequence = require('run-sequence'),
-    importCss   = require('gulp-import-css'),
     del         = require('del');
 
 //plugins - load gulp-* plugins without direct calls
@@ -40,13 +39,11 @@ var changeEvent = function(evt) {
 };
 
 //js
-gulp.task('build-js', function() { //common JS for every page
-    var vendorFiles = [                       
-                       basePaths.npm + 'imagesloaded/imagesloaded.pkgd.js',
-                       basePaths.bower + 'succinct/jQuery.succinct.min.js',
-                       basePaths.npm + 'prismjs/prism.js'
-                    ],
-        appFiles = [basePaths.src+'js/main-*']; //our own JS files
+gulp.task('build-js', function() {
+    var vendorFiles = [
+        basePaths.npm + 'imagesloaded/imagesloaded.pkgd.js'       
+        ],
+        appFiles = [basePaths.src+'js/*']; //our own JS files
 
     return gulp.src(vendorFiles.concat(appFiles)) //join them
         .pipe(plugins.filter('*.js'))//select only .js ones
@@ -57,34 +54,16 @@ gulp.task('build-js', function() { //common JS for every page
         .pipe(gulp.dest(basePaths.dest+'js')) //write results into file
 });
 
-gulp.task('build-cond-js', function() { //conditional JS to load on some cases
-    var vendorFiles = [
-                       basePaths.bower + 'leaflet/dist/leaflet.js',                       
-                    ],
-        appFiles = [basePaths.src+'js/cond-*']; //our own JS files
-
-    return gulp.src(vendorFiles.concat(appFiles)) //join them
-        .pipe(plugins.filter('*.js'))//select only .js ones
-        .pipe(plugins.concat('cond.js'))//combine them into bundle.js
-        .pipe(isProduction ? plugins.uglify() : gutil.noop()) //minification
-        .pipe(plugins.size()) //print size for log
-        .on('error', console.log) //log
-        .pipe(gulp.dest(basePaths.dest+'js')) //write results into file
-});
-
 //sass
 gulp.task('build-css', function() {
 
-    //paths for bourbon
+    //paths for mdl and bourbon
     var paths = require('node-bourbon').includePaths;
-        //leaflet = path('./bower_components/leaflet');
-        //paths.push(leaflet);
+       //mdl = path('./node_modules/material-design-lite/src');
+       //paths.push(mdl);
 
-    var vendorFiles = gulp.src([
-                        basePaths.src + 'css/*.css',
-                        basePaths.bower + 'leaflet/dist/leaflet.css',
-                        basePaths.npm + 'prismjs/themes/prism.css']), //components
-        appFiles = gulp.src([basePaths.src+'sass/main.scss']) //our main file with @import-s
+    var vendorFiles = gulp.src(basePaths.npm+'animate.css/animate.css'), //components
+        appFiles = gulp.src(basePaths.src+'sass/main.scss') //our main file with @import-s
         .pipe(!isProduction ? plugins.sourcemaps.init() : gutil.noop())  //process the original sources for sourcemap
         .pipe(plugins.sass({
                 outputStyle: sassStyle, //SASS syntas
@@ -94,17 +73,16 @@ gulp.task('build-css', function() {
                 browsers: ['last 4 versions'],
                 cascade: false
             }))
-        .pipe(!isProduction ? plugins.sourcemaps.write() : gutil.noop()) //add the map to modified source        
+        .pipe(!isProduction ? plugins.sourcemaps.write() : gutil.noop()) //add the map to modified source
         .on('error', console.log); //log
 
-    return es.concat(vendorFiles, appFiles) //combine vendor CSS files and our files after-SASS        
+    return es.concat(appFiles, vendorFiles) //combine vendor CSS files and our files after-SASS
         .pipe(plugins.concat('bundle.css')) //combine into file
         .pipe(isProduction ? plugins.cssmin() : gutil.noop()) //minification on production
         .pipe(plugins.size()) //display size
         .pipe(gulp.dest(basePaths.dest+'css')) //write file
         .on('error', console.log); //log
 });
-
 
 gulp.task('build-admin-css', function() {
     
@@ -149,17 +127,16 @@ gulp.task('revision', function(){
 
 //builds
 gulp.task('full-build', function(callback) {
-    runSequence('build-css',       
+    runSequence('build-css',
         'build-admin-css',
         'build-js',
-        'build-cond-js',
         'revision-clean',
         'revision',
         callback);
 });
 
 gulp.task('full-build-css', function(callback) {
-    runSequence('build-css',        
+    runSequence('build-css',
         'build-admin-css',
         'revision-clean',
         'revision',
@@ -168,7 +145,6 @@ gulp.task('full-build-css', function(callback) {
 
 gulp.task('full-build-js', function(callback) {
     runSequence('build-js',
-        'build-cond-js',
         'revision-clean',
         'revision',
         callback);
@@ -178,7 +154,6 @@ gulp.task('full-build-js', function(callback) {
 //svg - combine and clear svg assets
 gulp.task('svg-opt', function() {
     
-    //minification should be before cherio (so it's run twice)
     var icons = gulp.src([basePaths.src+'svg/icon-*.svg'])
         .pipe(plugins.svgmin({
             plugins: [{
@@ -203,31 +178,11 @@ gulp.task('svg-opt', function() {
                 removeEditorsNSData: true,
                 removeComments: true
             }]
-        })); //minification    
+        })); //minification
     
     return es.concat(icons, pics)                 
         .pipe(plugins.svgstore({ inlineSvg: true })) //combine for inline usage
-        .pipe(gulp.dest(basePaths.dest+'svg'));
-        
-        
-    //return gulp.src([basePaths.src+'svg/icon-*.svg'])
-    //        .pipe(plugins.svgmin({
-    //            plugins: [{
-    //                removeTitle: true,
-    //                removeDesc: { removeAny: true },
-    //                removeEditorsNSData: true,
-    //                removeComments: true
-    //            }]
-    //        })) 
-    //        .pipe(plugins.cheerio({ 
-    //        run: function ($) { //remove fill from icons
-    //            $('[fill]').removeAttr('fill');
-    //            $('[fill-rule]').removeAttr('fill-rule');
-    //        },
-    //        parserOptions: { xmlMode: true }
-    //        }))
-    //        .pipe(plugins.svgstore({ inlineSvg: true })) //combine for inline usage
-    //        .pipe(gulp.dest(basePaths.dest+'svg'));
+        .pipe(gulp.dest(basePaths.dest+'svg'));    
 });
 
 //watchers

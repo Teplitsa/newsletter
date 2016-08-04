@@ -1,0 +1,115 @@
+@charset "UTF-8";
+
+//inits
+@import "bourbon";
+
+/* columns */
+.admin-tmb {
+	width: 90%;
+	max-width: 54px;
+	max-height: 54px;
+	overflow: hidden;
+	
+	img {
+	max-width: 100%;
+	height: auto; }
+}
+
+.wp-list-table .column-author,
+.wp-list-table .column-id, 
+.wp-list-table .column-thumbnail,
+.wp-list-table .column-menu_order{
+	width: 6%;
+}
+
+.wp-list-table .column-attack_date,
+.wp-list-table .column-event_date {
+	width: 12%;
+}
+
+//avatar sizes
+.wp-list-table .column-username {
+	img {
+		width: 32px;
+		height: auto;
+	}
+}
+
+.avatar-size {
+	display: inline-block;
+	img {
+		width: 100%;
+		height: auto;
+	}
+}
+
+#wpadminbar #wp-admin-bar-user-info .avatar-size {
+    height: 64px;
+    left: -72px;
+    position: absolute;
+    top: 2px;
+    width: 64px;
+	img {
+		width: 100%;
+		height: auto;
+	}
+}
+
+
+
+/*  custom elements */
+
+#wpadminbar #wp-admin-bar-wp-logo .ab-icon::before {
+	color: #01E21A;
+}
+
+.tst-error {
+	border: 1px solid #DD3D36;
+	border-left-width: 5px;
+	padding: 8px;
+	color: #DD3D36;
+}
+
+.cmb-repeat-group-wrap .cmb2-wrap > .cmb-field-list > .cmb-row,
+.postbox-container .cmb2-wrap > .cmb-field-list > .cmb-row {
+	padding: 0.5em 0;
+	margin: 0;
+}
+
+
+input.regular-text {
+	//width: 90%;
+}
+
+.cmb2-wrap select {
+	min-width: 50%;
+}
+
+.cmb2-wrap .cmb-td textarea {
+	width: 100%;
+}
+
+.cmb2-id-user-topic {
+	.cmb-td {
+		@include calc(width, '100% - 250px');
+	}
+	
+}
+
+.tst-related-report {
+	padding-top: 6px;
+}
+
+.tst-related-event {
+	padding-top: 6px;
+	padding-bottom: 7px;
+	font-size: 0.9em;
+}
+
+
+.scode-hint {
+	margin-top: 1.5em; 
+}
+
+//terms
+.term-description-wrap textarea#description { height: 200px; }
