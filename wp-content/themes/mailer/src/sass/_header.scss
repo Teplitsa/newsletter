@@ -21,16 +21,24 @@
 
 /* Logo panel */
 .logo-panel {
+	background: $home_page_green;
+	border-color: $home_page_green;
+	color: $color-white;
+	
 	@include clearfix;
 	padding: $gut/4 0;
-	@include for(small-screens){
-		padding: $gut/2 0;
+	
+	@include for(small-screens){ padding: $gut/2 0; }
+		
+	a { color: $color-white; }
+	
+	.svg-icon {	fill: rgba(255,255,255, 1); }
+	
+	.site-logo:hover,
+	.site-logo:focus,
+	.site-logo:active {
+		.svg-icon {	fill: $color-white; }	
 	}
-	
-	@include upto(medium-screens) { @include transition(background 1s);	  }
-	@include for(medium-screens)  { @include transition(background 0.4s); }
-	
-	a { @include nav-text(); }
 }
 
 
@@ -76,23 +84,6 @@
 		height: $header_inner_height;
 		margin-top: 0;
 	}
-}
-
-/*  panel elements */
-.logo-panel {
-	background: $home_page_green;
-	border-color: $home_page_green;
-	color: $color-white;
-	
-	a { color: $color-white; }
-	.svg-icon {	fill: rgba(255,255,255, 1); }
-	
-	.site-logo:hover,
-	.site-logo:focus,
-	.site-logo:active {
-		.svg-icon {	fill: rgba(255,255,255, 0.75); }	
-	}
-	
 }
 
 	

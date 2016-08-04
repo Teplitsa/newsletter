@@ -53,7 +53,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .tpl-page {
-	min-height: 70vh;
+	min-height: 60vh;
+	margin-bottom: $gut*3;
 	
 	.entry-title {
 		@include header-title(large_title);
@@ -71,7 +72,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .footer-content {
 	border-top: 1px solid $color-border-light;
-	padding-top: $gut/2;
+	padding: $gut/2 0 $gut;
 	text-align: center;
 	@include nav-text();
 }
