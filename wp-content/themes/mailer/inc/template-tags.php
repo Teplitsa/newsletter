@@ -180,5 +180,16 @@ function tst_subscribe_title_screen(){
 	return '';
 }
 
+add_filter('wysija_preview', 'tst_wysija_preview');
+function tst_wysija_preview($email){
+	
+	if(isset($_REQUEST['wysija-page']) && (int)$_REQUEST['wysija-page'] == 1){
+		//var_dump($email);
+		$add = "<style>#wysija_wrapper { margin-top: 50px; }</style>";
+		$email = str_replace('<span style', $add.'<span style', $email);
+	}
+	
+	return $email;
+}
  
  
