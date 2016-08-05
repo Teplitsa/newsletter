@@ -157,5 +157,28 @@ function tst_undo_unsubscribe_link_screen(){
 	
 	return '';
 }
- 
 
+add_shortcode('tst_subscribe_title', 'tst_subscribe_title_screen');
+
+function tst_subscribe_title_screen(){
+	if(class_exists('WYSIJA') && !empty($_REQUEST['wysija-key'])){
+	 
+		$undo_paramsurl = array(
+			'wysija-page'=>1,
+			'controller'=>'confirm',
+			'action'=>'subscribe',
+			'wysija-key'=>$_REQUEST['wysija-key']
+		);
+		 
+		$model_config = WYSIJA::get('config','model');
+		$subs_title = sprintf($model_config->getValue('subscribed_title'), 'demo');
+		 
+			 
+		return $subs_title;
+	}
+	
+	return '';
+}
+
+ 
+ 
