@@ -130,3 +130,32 @@ function tst_get_sep($mark = '//') {
 	
 	return "<span class='sep'>".$mark."</span>";
 }
+
+/** shortcode for undo unsubscribe link */
+add_shortcode('tst_undo_unsubscribe_link', 'tst_undo_unsubscribe_link_screen');
+
+function tst_undo_unsubscribe_link_screen(){
+	if(class_exists('WYSIJA') && !empty($_REQUEST['wysija-key'])){
+	 
+		$undo_paramsurl = array(
+			'wysija-page'=>1,
+			'controller'=>'confirm',
+			'action'=>'undounsubscribe',
+			'wysija-key'=>$_REQUEST['wysija-key']
+		);
+		 
+		$model_config = WYSIJA::get('config','model');
+		$link_undo_unsubscribe = WYSIJA::get_permalink($model_config->getValue('confirmation_page'),$undo_paramsurl);
+		 
+		$undo_unsubscribe = str_replace(
+		array('[link]','[/link]'),
+		array('<a href="'.$link_undo_unsubscribe.'">','</a>'),
+		'[link]Подписаться снова[/link]');
+		 
+		return $undo_unsubscribe;
+	}
+	
+	return '';
+}
+ 
+
