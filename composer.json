@@ -17,11 +17,7 @@
         {
             "type": "composer",
             "url": "http://wp-languages.github.io"
-        },
-        {
-            "type": "artifact",
-            "url": "artifacts/"
-        },
+        },        
         {
             "type": "vcs",
             "url": "https://github.com/wp-sync-db/wp-sync-db"
