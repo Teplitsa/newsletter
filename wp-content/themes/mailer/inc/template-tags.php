@@ -8,88 +8,9 @@
  */
 
 
+/** == Common template functons == **/
 
-
-/* Custom conditions */
-function is_about(){
-	global $post;
-		
-	if(is_page_branch(2))
-		return true;
-	
-	if(is_post_type_archive('org'))
-		return true;
-	
-	if(is_post_type_archive('org'))
-		return true;
-	
-	return false;
-}
-
-function is_page_branch($pageID){
-	global $post;
-	
-	if(empty($pageID))
-		return false;
-		
-	if(!is_page() || is_front_page())
-		return false;
-	
-	if(is_page($pageID))
-		return true;
-	
-	if($post->post_parent == 0)
-		return false;
-	
-	$parents = get_post_ancestors($post);
-	
-	if(is_string($pageID)){
-		$test_id = get_page_by_path($pageID)->ID;
-	}
-	else {
-		$test_id = (int)$pageID;
-	}
-	
-	if(in_array($test_id, $parents))
-		return true;
-	
-	return false;
-}
-
-
-function is_tax_branch($slug, $tax) {
-	//global $post;
-	
-	$test = get_term_by('slug', $slug, $tax);
-	if(empty($test))
-		return false;
-	
-	if(is_tax($tax)){
-		$qobj = get_queried_object();
-		if($qobj->term_id == $test->term_id || $qobj->parent == $test->term_id)
-			return true;
-	}
-	
-	//if(is_singular() && is_object_in_term($post->ID, $tax, $test->term_id))
-	//	return true;
-	
-	return false;
-}
-
-
-function is_posts() {
-	
-	if(is_home() || is_category())
-		return true;	
-		
-	if(is_singular('post'))
-		return true;
-	
-	return false;
-}
-
-
-/** Logo **/
+/* logos */
 function tst_site_logo($size = 'regular') {
 
 	switch($size) {
@@ -125,11 +46,15 @@ function tst_svg_icon($id, $echo = true) {
 }
 
 
-/** Separator **/
+/* separator */
 function tst_get_sep($mark = '//') {
 	
 	return "<span class='sep'>".$mark."</span>";
 }
+
+
+
+/** == MailPoet filters == **/
 
 /** shortcode for undo unsubscribe link */
 add_shortcode('tst_undo_unsubscribe_link', 'tst_undo_unsubscribe_link_screen');
@@ -192,4 +117,19 @@ function tst_wysija_preview($email){
 	return $email;
 }
  
+/* be sure that our teplitsa theme is always default */
+add_action('init', 'tst_wysija_set_default_theme');
+function tst_wysija_set_default_theme(){
+	
+	if(!class_exists('WYSIJA'))
+		return;
+	
+	$model_config = WYSIJA::get('config', 'model');
+	$default_theme = $model_config->getValue('newsletter_default_theme'); 
+	
+	if($default_theme != 'teplitsa')
+		$model_config->save(array('newsletter_default_theme' => 'teplitsa'));
+}
+
+
  

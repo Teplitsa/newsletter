@@ -42,6 +42,7 @@
         "wpackagist-plugin/media-search-enhanced": "@stable",
         "wpackagist-plugin/mailgun": "@stable",
         "wpackagist-plugin/wysija-newsletters": "@stable",
+        "wpackagist-plugin/members": "@stable",
         "koodimonni-language/core-ru_ru": "*" 
         
     },

@@ -96,20 +96,25 @@ input.regular-text {
 	
 }
 
-.tst-related-report {
-	padding-top: 6px;
+
+/** Mailpoet **/
+#wysija_toolbar .wj_content {
+	
+	li { display: none; }
+	li:nth-of-type(1),
+	li:nth-of-type(2),
+	li:nth-of-type(4) { display: block; }
+	
+	#wysija_divider_settings { display: none; }
 }
 
-.tst-related-event {
-	padding-top: 6px;
-	padding-bottom: 7px;
-	font-size: 0.9em;
+
+.non-admin-user {
+	&.toplevel_page_wysija_campaigns {
+		.action_buttons { display: none; }
+	}
+	
 }
 
 
-.scode-hint {
-	margin-top: 1.5em; 
-}
 
-//terms
-.term-description-wrap textarea#description { height: 200px; }
