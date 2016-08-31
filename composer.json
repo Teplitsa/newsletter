@@ -43,7 +43,9 @@
         "wpackagist-plugin/mailgun": "@stable",
         "wpackagist-plugin/wysija-newsletters": "@stable",
         "wpackagist-plugin/members": "@stable",
-        "wpackagist-plugin/all-in-one-wp-security-and-firewall": "@stable"
+        "wpackagist-plugin/all-in-one-wp-security-and-firewall": "@stable",
+        "wpackagist-plugin/cloudflare": "@stable",
+        "wpackagist-plugin/cloudflare-flexible-ssl": "@stable"
         "koodimonni-language/core-ru_ru": "*" 
         
     },
