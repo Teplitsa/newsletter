@@ -1,0 +1,16 @@
+{if ! $background_color}{set var="$background_color" value="$styles.body.background"}{/if}
+<table class="wysija_block" width="100%" cellspacing="0" cellpadding="0" border="0" align="center">
+    <tr>
+    	{if ! #text && #image}
+    		<td class="wysija_content_container" align="center" valign="top">
+    			{include file="templates/newsletter/email/block_image.html"}
+			</td>
+		{/if}
+		{if #text}
+			<td class="wysija_content_container" {if #is_rtl} align="right" dir="rtl" {/if} {if ! #is_rtl} align="left" {/if} >
+				{include file="templates/newsletter/email/block_image.html"}
+	        	{include file="templates/newsletter/email/block_text.html"}
+        	</td>
+		{/if}
+    </tr>
+</table>

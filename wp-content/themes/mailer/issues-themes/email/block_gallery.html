@@ -1,0 +1,13 @@
+<table class="wysija_block" width="100%" cellspacing="0" cellpadding="0" border="0" align="center">
+   {foreach name="#items" key="j" value="image"}
+		{if #image.url}
+		<tr>
+			<td align="center" width="100%" valign="top">
+				<a href="{#image.url}">
+					<img class="image_fix" width="{#image.width}" height="{#image.height}" src="{#image.src}" border="0" alt="{#image.alt|url_decode|htmlentities}" style="max-width:100%;height:auto;" />
+				</a>
+			</td>					
+		</tr>
+		{/if}
+	{/foreach}				
+</table>
