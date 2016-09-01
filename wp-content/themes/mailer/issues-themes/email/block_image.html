@@ -1,7 +1,7 @@
 {if #image}
 <center style="max-width:100%;padding-top:10px;padding-bottom: 10px;width:100%;">
 	{if #image.url}<a class="wysija_image_link" href="{#image.url}" style="display:block;width:100%;">{/if}
-	<img class="image_fix" width="{#image.width}" height="{#image.height}" src="{#image.src}" border="0" alt="{#image.alt|url_decode|htmlentities}" style="max-width:100%;height:auto;" />
+	<img class="image_fix" width="{#image.width}" height="{#image.height}" src="{#image.src}" border="0" alt="{#image.alt|url_decode|htmlentities}" style="max-width:100%;height:auto !important;" />
 	{if #image.url}</a>{/if}
 </center>
 {/if}
