@@ -50,43 +50,6 @@ function tst_entry_wpautop($content){
 }
 
  
-/** Custom excerpts  **/
-
-/** more link */
-function tst_continue_reading_link() {
-	$more = tst_get_more_text();
-	return '&nbsp;<a href="'. esc_url( get_permalink() ) . '"><span class="meta-nav">'.$more.'</span></a>';
-}
-
-function tst_get_more_text(){
-	
-	return __('More', 'tst')."&nbsp;&raquo;";
-}
-
-/** excerpt filters  */
-add_filter( 'excerpt_more', 'tst_auto_excerpt_more' );
-function tst_auto_excerpt_more( $more ) {
-	return '&hellip;';
-}
-
-add_filter( 'excerpt_length', 'tst_custom_excerpt_length' );
-function tst_custom_excerpt_length( $l ) {
-	return 30;
-}
-
-/** inject */
-add_filter( 'get_the_excerpt', 'tst_custom_excerpt_more' );
-function tst_custom_excerpt_more( $output ) {
-	global $post;
-	
-	if(is_singular() || is_search())
-		return $output;
-	
-	$output .= tst_continue_reading_link();
-	return $output;
-}
-
-
 /** Current URL  **/
 if(!function_exists('tst_current_url')){
 function tst_current_url() {
@@ -239,6 +202,7 @@ function tst_adminbar_logo($wp_admin_bar){
 
 add_action('wp_footer', 'tst_adminbar_voices');
 add_action('admin_footer', 'tst_adminbar_voices');
+
 function tst_adminbar_voices() {
 	
 ?>

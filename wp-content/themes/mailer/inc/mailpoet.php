@@ -85,13 +85,32 @@ function tst_wysija_set_default_theme(){
 
 
 /* subscribtion form code customisation */
+add_shortcode('tst_sbs_form', 'tst_sbs_form_screen');
+function tst_sbs_form_screen($atts) {
+	
+	extract(shortcode_atts(array(				
+		'id'  => 0
+	), $atts));
+	
+	
+	if($id <= 0)
+		return '';
+	
+	$out = "<div class='tst-sbs-form'>";
+	$out .= tst_wysija_subscribtion_form($form_id);
+	$out .= "</div>";
+	
+	return $out;
+}
+
+
 function tst_wysija_subscribtion_form($form_id){
 	
 	if(!class_exists('WYSIJA_NL_Widget'))
 		return '';
 	
 	$widgetNL = new WYSIJA_NL_Widget(true);
-	$form_html = $widgetNL->widget(array('form' => 1, 'form_type' => 'php'));
+	$form_html = $widgetNL->widget(array('form' => $form_id, 'form_type' => 'php'));
 	
 	//markup filters
 	
