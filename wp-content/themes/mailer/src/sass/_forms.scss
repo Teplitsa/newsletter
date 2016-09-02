@@ -99,6 +99,13 @@ select:-webkit-autofill:focus {
 }
 
 
+.widget_wysija {
+	padding: $gut;
+	background: #f5f5f5;
+	border: 1px solid #f3f3f3;
+	border-radius: 2px;
+}
+
 /** inputs **/
 .tst-sbs-form {
 	.wysija-paragraph {
@@ -117,7 +124,9 @@ select:-webkit-autofill:focus {
 	}
 
 	.wysija-checkbox-paragraph {
-		margin: $input-top-gut*1.5 0;
+		margin: $input-top-gut*1.5 5%;
+		width: 90%;
+		
 		
 		.formError .formErrorContent {
 			line-height: 1.2;
@@ -217,11 +226,12 @@ select:-webkit-autofill:focus {
 	.wysija-checkbox-label {
 		@include input-text-label();
 		margin-top: $input-top-gut*6;
-		
+		width: 90%;
+		margin-left: 5%;
 	}
 	
 	.wysija-submit  {
-		margin-top: $input-top-gut*6;
+		margin: $input-top-gut*6 auto 0;
 		
 		border: none;		
 		outline: none;
@@ -229,7 +239,7 @@ select:-webkit-autofill:focus {
 		font-size: 12px;
 		line-height: 30px;
 		background: $input-color-active;
-		padding: 8px 26px;
+		padding: 8px 36px;
 		color: $color-white;
 		@include transition(background 0.2s);
 		&:hover {
