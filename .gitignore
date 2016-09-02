@@ -17,3 +17,4 @@ node_modules
 .sass-cache
 /searchreplacedb2.php
 /composer.lock
+aiowps_backups
