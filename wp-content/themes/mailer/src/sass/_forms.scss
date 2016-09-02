@@ -1,0 +1,240 @@
+/** Forms **/
+
+$input-top-gut: 8px;
+$input-color-active: $color-link-one;
+$input-color-error:  $color-form-invalid;
+$input-border-color: $color-border-normal;
+$label-text-color:   $color-text-black;	
+
+@mixin input-text-label {
+	font-family: $title;
+	font-size: 18px;
+	line-height: 20px;
+	color: $label-text-color;
+	white-space: nowrap;
+	text-align: left;
+	pointer-events: none;	
+}
+
+@mixin input-text {
+	font-family: $title;		
+	text-align: left;
+	font-size: 17px;
+	line-htight: 20px;
+}
+
+@mixin checkbox-text($size: 18px) {
+	font-family: $sans;	
+	line-height: 1.2;
+	color: $label-text-color;	
+	text-align: left;
+	font-size: $size;
+}
+
+@mixin response-block($mod : default) {
+	font-family: $sans;
+	line-height: 1.2;
+	padding: 14px 22px;
+	background: $color-white;
+	border: 1px solid $color-border-normal;
+	position: relative;
+	color: $label-text-color;
+		
+	p:last-child { margin: 0; }
+	
+	@if $mod == error {	
+		background: $input-color-error;
+		color: $color-white;
+		border: none;
+	}
+	@else if $mod == ok {				
+		&:before {
+			content: '';
+			display: block;
+			background: $input-color-active;
+			width: 6px;
+			height: 100%;
+			position: absolute;
+			left: -1px;
+			top: 0;
+		}
+	}
+}
+
+/* autocomplete background in chrome */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus
+input:-webkit-autofill, 
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+	background: $color-white;
+}
+
+/** messages **/
+.formError .formErrorContent {
+	@include response-block(error);	
+}
+
+.entry-content .wysija-msg,
+.wysija-msg {
+	li {
+		padding: 0;
+		&:before { display: none; }
+		font-size: 16px;
+		margin: 0;
+	}
+	
+	.updated {		
+		@include response-block(ok);
+	}
+	
+	.error {
+		@include response-block(error);
+	}
+}
+
+
+/** inputs **/
+.tst-sbs-form {
+	.wysija-paragraph {
+		margin: $input-top-gut 0;
+		
+		.formError .formErrorContent {
+			line-height: 1.2;
+			padding: 12px;
+			height: 57px;		
+			top: -4px;
+			
+			@include upto(medium-screens) {
+				left: -100%;
+			}
+		}
+	}
+
+	.wysija-checkbox-paragraph {
+		margin: $input-top-gut*1.5 0;
+		
+		.formError .formErrorContent {
+			line-height: 1.2;
+			left: 10px;
+		}
+		
+		label {
+			display: block;
+			width: 100%;
+			position: relative;
+			padding-left: 26px;
+			line-height: 20px;
+		}
+		
+		input {
+			margin: 0;
+			padding: 0;
+			top: 4px;
+			left: 0;		
+			position: absolute;
+			border: none;
+			opacity: 0;
+		}
+		
+		span {
+			@include checkbox-text(15px);
+			display: inline-block;
+			position: relative;
+			line-height: 20px;
+			
+			&:before {
+				content: '';
+				display: block;
+				width: 16px;
+				height: 16px;
+				border-radius: 2px;
+				background: $color-white;
+				border: 2px solid $color-text;
+				position: absolute;
+				top: 1px;
+				left: -26px;
+				cursor: pointer;
+			}
+		}
+		
+		input:checked + span {
+			&:before {
+				background-color: $input-color-active;
+				border-color: $input-color-active;
+				background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+PHN2ZyB3aWR0aD0iMTdweCIgaGVpZ2h0PSIxM3B4IiB2aWV3Qm94PSIwIDAgMTcgMTMiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeG1sbnM6c2tldGNoPSJodHRwOi8vd3d3LmJvaGVtaWFuY29kaW5nLmNvbS9za2V0Y2gvbnMiPiAgICAgICAgPHRpdGxlPlNoYXBlPC90aXRsZT4gICAgPGRlc2M+Q3JlYXRlZCB3aXRoIFNrZXRjaC48L2Rlc2M+ICAgIDxkZWZzPjwvZGVmcz4gICAgPGcgaWQ9IlBhZ2UtMSIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCIgc2tldGNoOnR5cGU9Ik1TUGFnZSI+ICAgICAgICA8cGF0aCBkPSJNMTYuNSwxLjg3OTE0Mjg2IEw1LjUyODU3MTQzLDEyLjg1MDU3MTQgTDAuNSw3LjgyMiBMMS43ODkxNDI4Niw2LjUzMjg1NzE0IEw1LjUyODU3MTQzLDEwLjI2MzE0MjkgTDE1LjIxMDg1NzEsMC41OSBMMTYuNSwxLjg3OTE0Mjg2IEwxNi41LDEuODc5MTQyODYgWiIgaWQ9IlNoYXBlIiBmaWxsPSIjRkZGRkZGIiBza2V0Y2g6dHlwZT0iTVNTaGFwZUdyb3VwIj48L3BhdGg+ICAgIDwvZz48L3N2Zz4=);
+				background-repeat: no-repeat;
+				background-size: 16px 13px;
+				background-position: 0 -2px;
+			}
+		}
+	}
+
+	.wysija-input {	
+		@include input-text();
+		color: $color-text-semi;
+		border-radius: 0;
+		border: 1px solid $input-border-color;
+		background: $color-white;
+		width: 100%;
+		padding: 16px 8px;
+		text-align: center;
+		
+		&[type="number"] {
+			-moz-appearance: textfield;
+		}
+	
+		&[type="number"]::-webkit-inner-spin-button,
+		&[type="number"]::-webkit-outer-spin-button {
+			-webkit-appearance: none;
+			margin: 0;
+		}
+		
+		@include placeholder {			
+			color: $color-text-semi;
+			text-align: center;
+		}
+		
+		.centered-form & {
+			@include placeholder { text-align: center; }
+			text-align: center;
+		}
+		
+		&:focus {			
+			padding: 15px 7px;
+			border: 2px solid $input-color-active;
+			box-shadow: inset 1px 1px 2px rgba(200,200,200, 0.5);
+			color: $label-text-color;
+		} 
+		
+	}
+	
+	.wysija-checkbox-label {
+		@include input-text-label();
+		margin-top: $input-top-gut*6;
+		
+	}
+	
+	.wysija-submit  {
+		margin-top: $input-top-gut*6;
+		
+		border: none;		
+		outline: none;
+		@include nav-text();
+		font-size: 12px;
+		line-height: 30px;
+		background: $input-color-active;
+		padding: 8px 26px;
+		color: $color-white;
+		@include transition(background 0.2s);
+		&:hover {
+			box-shadow: 1px 1px 3px rgba(0,0,0,	0.3);
+			background: lighten($input-color-active, 5%);
+		}
+	}
+}
