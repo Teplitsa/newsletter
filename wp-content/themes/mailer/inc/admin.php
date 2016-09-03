@@ -367,7 +367,7 @@ add_action('admin_init', 'tst_mailpoet_url_handler', 10);
 function tst_mailpoet_url_handler($query) {
     $page = isset($_REQUEST["page"]) ? $_REQUEST["page"] : '';
     $action = isset($_REQUEST["action"]) ? $_REQUEST["action"] : '';
-    if($page == 'wysija_subscribers' && (in_array($action, array('import', 'export')))) {
+    if($page == 'wysija_subscribers' && (in_array($action, array('export')))) {
         if(tst_is_disable_export()) {
             header('HTTP/1.0 403 Forbidden');
             wp_die("Action Forbidden");
@@ -380,7 +380,6 @@ function tst_mailpoet_head() {
     if(tst_is_disable_export()) {
 ?>
     <style>
-        #wysija-app h2 a[href*="action=import"],
         #wysija-app h2 a[href*="action=export"] {
             display:none;
         }
