@@ -8,7 +8,7 @@
     
     Теплица социальных технологий
     
-    <?php wp_nav_menu(array('menu' => 'pd-footer-links', 'container' => false, 'menu_class' => 'pd-footer-links')); ?>
+    <?php wp_nav_menu(array('menu' => 'footer-links', 'container' => false, 'menu_class' => 'pd-footer-links')); ?>
     
     </div>
     
