@@ -4,14 +4,8 @@
 
 <div class="container">	
 	
-	<div class="footer-content">
-    
-    Теплица социальных технологий
-    
-    <?php wp_nav_menu(array('menu' => 'footer-links', 'container' => false, 'menu_class' => 'pd-footer-links')); ?>
-    
-    </div>
-    
+	<div class="footer-content">Теплица социальных технологий</div>
+	
 </div>
 </footer>
 
