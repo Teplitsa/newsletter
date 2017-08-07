@@ -123,7 +123,7 @@ select:-webkit-autofill:focus {
 		}
 	}
 
-	.wysija-checkbox-paragraph {
+	.wysija-checkbox-paragraph, .wysija-paragraph.tst-agree-pd-paragraph {
 		margin: $input-top-gut*1.5 5%;
 		width: 90%;
 		
@@ -228,6 +228,23 @@ select:-webkit-autofill:focus {
 		margin-top: $input-top-gut*6;
 		width: 90%;
 		margin-left: 5%;
+	}
+	
+	label.tst-agree-pd {
+        color: black;
+        display: inline-block;
+        font-family: DIN2014-Regular,"DIN 2014",Helvetica Neue,Helvetica,sans-serif;
+        font-size: 15px;
+        line-height: 20px;
+        position: relative;
+        text-align: left;
+        pointer-events: auto;
+        text-align: left;
+        white-space: normal;
+        margin-left: 0px;
+	}
+	
+	.tst-agree-pd-paragraph {
 	}
 	
 	.wysija-submit  {
