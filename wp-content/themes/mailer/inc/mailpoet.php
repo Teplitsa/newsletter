@@ -126,38 +126,6 @@ function tst_wysija_subscribtion_form($form_id){
 		}
 	}
 	
-	// filter PD agreement
-	preg_match_all('/(<p class=\"wysija-paragraph\">.*?<\/p>)/s',$form_html, $m);
-	if(isset($m[1]) && !empty($m[1])){
-	    foreach($m[1] as $c_box){
-	        if(preg_match('/.*?pd-agreement.*?/', $c_box)) {
-	            $c_box_new = str_replace("wysija-paragraph", "wysija-paragraph tst-agree-pd-paragraph", $c_box);
-	            $form_html = str_replace($c_box, $c_box_new, $form_html);
-	        }
-	    }
-	}
-	
-	preg_match_all('/(<label class=\"wysija-checkbox-label\">.*?pd-agreement.*?<\/label>)/s',$form_html, $m);
-	if(isset($m[1]) && !empty($m[1])){
-	    foreach($m[1] as $c_box){
-	        	
-	        $label = '';
-	        $label = strip_tags($c_box);
-	        if(!empty($label)){
-	            
-	            $c_box_new = $c_box;
-	            
-	            $c_box_new = str_replace("wysija-checkbox-label", "wysija-checkbox-label tst-agree-pd", $c_box_new);
-	            $c_box_new = str_replace($label, "<span>{$label}</span>", $c_box_new);
-	            $c_box_new = htmlspecialchars_decode($c_box_new);
-	            
-	            #echo $c_box_new;
-	             
-	            $form_html = str_replace($c_box, $c_box_new, $form_html);
-	        }
-	    }
-	}
-	
 	return $form_html;
 }
 
