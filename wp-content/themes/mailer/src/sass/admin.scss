@@ -91,7 +91,7 @@ input.regular-text {
 
 .cmb2-id-user-topic {
 	.cmb-td {
-		@include calc(width, '100% - 250px');
+		width: calc(100% - 250px); 
 	}
 	
 }

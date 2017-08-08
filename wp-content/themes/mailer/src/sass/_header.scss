@@ -51,7 +51,7 @@
 	width: 100%;
 		
 	@include for(small-screens) {
-		@include calc(width, "100% - 108px");		
+		width: calc(100% - 108px);	
 	}
 		
 	@include for(medium-screens) {		
@@ -73,7 +73,7 @@
 	height: $header_inner_height - 4px;
 	width: 172px;
 	fill: #fff;
-	@include transition(all 0.35s);
+	transition: all .35s;
 	margin-top: 2px;
 	
 	&:hover {

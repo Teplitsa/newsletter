@@ -204,13 +204,15 @@ select:-webkit-autofill:focus {
 			margin: 0;
 		}
 		
-		@include placeholder {			
+		&::placeholder {			
 			color: $color-text-semi;
 			text-align: center;
 		}
 		
 		.centered-form & {
-			@include placeholder { text-align: center; }
+			&::placeholder {
+				text-align: center;
+			}
 			text-align: center;
 		}
 		
@@ -241,7 +243,7 @@ select:-webkit-autofill:focus {
 		background: $input-color-active;
 		padding: 8px 36px;
 		color: $color-white;
-		@include transition(background 0.2s);
+		transition: background .2s;
 		&:hover {
 			box-shadow: 1px 1px 3px rgba(0,0,0,	0.3);
 			background: lighten($input-color-active, 5%);

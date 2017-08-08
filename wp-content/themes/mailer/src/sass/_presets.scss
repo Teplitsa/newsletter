@@ -343,7 +343,7 @@ $rule: 	 1px solid $color-border-normal;
 		font-size: inherit;
 		font-weight: inherit;
 		line-height: inherit;
-		@include transition(all 0.2s);
+		transition: all .2s;
 		
 		&:hover, &:focus, &:active {
 			color: $color-text-light;			
