@@ -90,7 +90,6 @@ require get_template_directory().'/inc/class-cssjs.php';
 //require get_template_directory().'/inc/class-mediamnt.php';
 
 require get_template_directory().'/inc/extras.php';
-require get_template_directory().'/inc/forms.php';
 require get_template_directory().'/inc/mailpoet.php';
 require get_template_directory().'/inc/template-tags.php';
 
