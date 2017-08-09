@@ -25,4 +25,6 @@ jQuery(document).ready(function($){
 		
 	});
 	
+	$( "label.frm_primary_label:contains('reCAPTCHA')" ).hide();
+	
 }); //jQuery
