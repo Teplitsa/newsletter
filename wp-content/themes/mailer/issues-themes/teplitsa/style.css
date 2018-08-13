@@ -16,41 +16,43 @@ html {
 }
 body {
     color:#4c5051;
-    font-family:  Arial; 
-    font-size: 16px;
+    font-family:  DIN2014-Regular, Arial; 
+    font-size: 18px;
+    letter-spacing:-0.3px;
     background-color: #fff;
 }
 .footer {
     color:#7c8284;
-    font-family:  Arial; 
+    font-family:  DIN2014-Regular, Arial; 
     font-size: 10px;    
 }
 h1 {
     color: #1f2223;
-    font-family:  Arial; 
+    font-family:  DIN2014-Demi, Arial; 
     font-size: 36px;
-    font-weight:600;
-    letter-spacing: -0.02em;
+    font-weight:400;
+    letter-spacing:-0.3px;
     line-height: 115%;
 }
 h2 {
     color: #1f2223;
-    font-family:  Arial; 
-    font-size: 16px;
+    font-family:  DIN2014-Demi, Arial; 
+    font-size: 18px;
     font-weight:600;
-    letter-spacing: -0.02em;
-    line-height: 200%;
+    letter-spacing:-0.3px;
+    line-height: 42px;
 }
 h3 {
     color: #1f2223;
-    font-family:  Arial; 
+    font-family:  DIN2014-Demi, Arial; 
     font-size: 14px;
-    letter-spacing: -0.02em;
+    font-weight:600;
+    letter-spacing:-0.3px;
     line-height: 150%;
 }
 a {
     color: #219665;
-    font-family:  Arial; 
+    font-family:  DIN2014-Regular, Arial; 
     font-size: 14px;
     text-decoration:'none';
 }
@@ -59,6 +61,7 @@ a {
 }
 
 unsubscribe {
+    font-family:  DIN2014-Regular, Arial; 
     color:#219665;
     text-transform: uppercase;
 }
