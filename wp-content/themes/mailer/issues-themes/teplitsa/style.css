@@ -16,19 +16,19 @@ html {
 }
 body {
     color:#4c5051;
-    font-family:  DIN2014-Regular, Arial; 
+    font-family:  DIN2014Regular, Arial; 
     font-size: 18px;
     letter-spacing:-0.3px;
     background-color: #fff;
 }
 .footer {
     color:#7c8284;
-    font-family:  DIN2014-Regular, Arial; 
+    font-family:  DIN2014Regular, Arial; 
     font-size: 10px;    
 }
 h1 {
     color: #1f2223;
-    font-family:  DIN2014-Demi, Arial; 
+    font-family:  DIN2014Demi, Arial; 
     font-size: 36px;
     font-weight:400;
     letter-spacing:-0.3px;
@@ -36,7 +36,7 @@ h1 {
 }
 h2 {
     color: #1f2223;
-    font-family:  DIN2014-Demi, Arial; 
+    font-family:  DIN2014Demi, Arial; 
     font-size: 18px;
     font-weight:600;
     letter-spacing:-0.3px;
@@ -44,7 +44,7 @@ h2 {
 }
 h3 {
     color: #1f2223;
-    font-family:  DIN2014-Demi, Arial; 
+    font-family:  DIN2014Demi, Arial; 
     font-size: 14px;
     font-weight:600;
     letter-spacing:-0.3px;
@@ -52,7 +52,7 @@ h3 {
 }
 a {
     color: #219665;
-    font-family:  DIN2014-Regular, Arial; 
+    font-family:  DIN2014Regular, Arial; 
     font-size: 18px;
     text-decoration:'none';
 }
@@ -61,7 +61,7 @@ a {
 }
 
 unsubscribe {
-    font-family:  DIN2014-Regular, Arial; 
+    font-family:  DIN2014Regular, Arial; 
     color:#219665;
     text-transform: uppercase;
 }
