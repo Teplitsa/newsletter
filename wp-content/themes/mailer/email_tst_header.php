@@ -14,53 +14,6 @@
 		padding-bottom: 16px;
 	}
 	
-	.tst-person {
-		border-bottom: 1px solid #dfe3e6;
-		padding-top: 22px;
-		padding-bottom: 22px;
-	}
-
-	.tst-person img {
-		max-width: 32px; max-height: 32px; margin-right: 16px; border-radius: 50%; float:left;
-	}
-	
-	.tst-person .text {
-		float: left;
-		display:block;
-		font-size: 12px;
-		line-height: 17px;
-		text-transform: uppercase;
-	}
-
-	.tst-person .name {
-		font-weight: 400;
-		padding-top: 1px;
-		display:block;
-	}
-
-	.tst-person .position {
-		color: #ddd;
-		display:block;
-	}
-	
-	.tst-button {
-		text-align: center;
-		margin-top: 30px;
-		margin-bottom: 0px;
-	}
-	
-	.tst-button a {
-		font-size: 12px;
-		text-transform: uppercase;
-		color: #f2f2f2;
-		background-color: #219665;
-		display: inline-block;
-		text-decoration: none;
-		height: 31px;
-		padding: 9px 22px 0px 22px;
-		border-radius: 20px;
-	}
-	
 </style>
 
 <div>
