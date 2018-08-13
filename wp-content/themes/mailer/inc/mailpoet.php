@@ -207,7 +207,7 @@ function tst_mailpoet_shortcodes_custom_filter( $tag_value , $user_id ) {
 		$data = explode("_", $joined_data);
 		
 		$caption = $data[0];
-		$url = $data[1];
+		$url = 'https://'.$data[1];
 		
 		if($caption && $url) {
 			ob_start();
