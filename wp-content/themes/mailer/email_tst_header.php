@@ -8,6 +8,12 @@
 		letter-spacing: -0.02em;
 	}
 	
+	.wysija_list_item + h2 > span:last-child {
+		display: inline-block;
+		margin-top: 16px;
+		padding-bottom: 16px;
+	}
+	
 	.tst-person {
 		border-bottom: 1px solid #dfe3e6;
 		padding-top: 22px;
