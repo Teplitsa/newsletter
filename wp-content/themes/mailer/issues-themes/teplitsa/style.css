@@ -15,34 +15,42 @@ html {
     background-color: #fff;
 }
 body {
-    color:#000;
-    font-family:  Georgia,Times,Times New Roman,serif; 
-    font-size: 14px;
+    color:#4c5051;
+    font-family:  Arial; 
+    font-size: 16px;
     background-color: #fff;
 }
 .footer {
-    color: #999;
-    font-family:  Georgia,Times,Times New Roman,serif; 
+    color:#7c8284;
+    font-family:  Arial; 
     font-size: 10px;    
 }
 h1 {
-    color: #000;
-    font-family:  Georgia,Times,Times New Roman,serif; 
-    font-size: 28px;
+    color: #1f2223;
+    font-family:  Arial; 
+    font-size: 36px;
+    font-weight:600;
+    letter-spacing: -0.02em;
+    line-height: 115%;
 }
 h2 {
-    color: #000;
-    font-family:  Georgia,Times,Times New Roman,serif; 
-    font-size: 21px;
+    color: #1f2223;
+    font-family:  Arial; 
+    font-size: 16px;
+    font-weight:600;
+    letter-spacing: -0.02em;
+    line-height: 200%;
 }
 h3 {
-    color: #000;
-    font-family:  Georgia,Times,Times New Roman,serif; 
-    font-size: 18px;
+    color: #1f2223;
+    font-family:  Arial; 
+    font-size: 14px;
+    letter-spacing: -0.02em;
+    line-height: 150%;
 }
 a {
-    color: #32b945;
-    font-family:  Georgia,Times,Times New Roman,serif; 
+    color: #219665;
+    font-family:  Arial; 
     font-size: 14px;
     text-decoration:'none';
 }
@@ -51,5 +59,5 @@ a {
 }
 
 unsubscribe {
-    color:#7f7f7f;
+    color:#219665;
 }

@@ -161,4 +161,68 @@ function tst_wysija_subscribtion_form($form_id){
 	return $form_html;
 }
 
-
+function tst_mailpoet_shortcodes_custom_filter( $tag_value , $user_id ) {
+	
+    if( in_array($tag_value, array('tst_footer', 'tst_header') ) ) {
+		ob_start();
+		include(get_template_directory() . '/email_' . $tag_value . '.php');
+        $replacement = ob_get_clean();
+    }
+	elseif(preg_match("/tst_person_/", $tag_value)) {
+		$joined_data = str_replace("tst_person_", "", $tag_value);
+		$data = explode("_", $joined_data);
+		
+		$name = $data[0];
+		$position = $data[1];
+		if(!empty($data[2])) {
+			$pic = wp_get_attachment_image_src((int)$data[2]);
+			$pic = $pic[0];
+		}
+		else {
+			$pic = null;
+		}
+		
+		if($name) {
+			ob_start();
+?>
+		<p class="tst-person">
+		<?php if($pic):?>
+			<img src="<?php echo $pic?>" />
+		<?php endif?>
+			<span class="text">
+				<span class="name"><?php echo $name?></span>
+				<span class="position"><?php echo $position?></span>
+			</span>
+			<br style="float:none; clear:both;"/>
+		</p>
+<?php
+			$replacement = ob_get_clean();
+		}
+		else {
+			$replacement = "";
+		}
+	}
+	elseif(preg_match("/tst_button_/", $tag_value)) {
+		$joined_data = str_replace("tst_button_", "", $tag_value);
+		$data = explode("_", $joined_data);
+		
+		$caption = $data[0];
+		$url = $data[1];
+		
+		if($caption && $url) {
+			ob_start();
+?>
+		<p class="tst-button">
+			<a href="<?php echo $url?>"><?php echo $caption?></a>
+		</p>
+<?php
+			$replacement = ob_get_clean();
+		}
+		else {
+			$replacement = "";
+		}
+	}	
+	
+    return $replacement;
+}
+add_filter('wysija_shortcodes', 'tst_mailpoet_shortcodes_custom_filter', 10, 2);
