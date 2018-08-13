@@ -21,11 +21,7 @@
 	}
 
 	.tst-person img {
-		max-width: 32px;
-		max-height: 32px;
-		margin-right: 16px;
-		border-radius: 50%;
-		float:left;
+		max-width: 32px; max-height: 32px; margin-right: 16px; border-radius: 50%; float:left;
 	}
 	
 	.tst-person .text {

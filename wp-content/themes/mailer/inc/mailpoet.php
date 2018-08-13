@@ -187,7 +187,7 @@ function tst_mailpoet_shortcodes_custom_filter( $tag_value , $user_id ) {
 ?>
 		<p class="tst-person">
 		<?php if($pic):?>
-			<img src="<?php echo $pic?>" />
+			<img src="<?php echo $pic?>" style="max-width: 32px; max-height: 32px; margin-right: 16px; border-radius: 50%; float:left;" />
 		<?php endif?>
 			<span class="text">
 				<span class="name"><?php echo $name?></span>
