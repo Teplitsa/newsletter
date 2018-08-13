@@ -14,6 +14,10 @@
 		padding-bottom: 16px;
 	}
 	
+	.wysija_unsubscribe_container a {
+		text-transform: uppercase;
+	}
+	
 </style>
 
 <div>
