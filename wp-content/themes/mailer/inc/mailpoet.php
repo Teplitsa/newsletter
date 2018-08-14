@@ -213,7 +213,7 @@ function tst_mailpoet_shortcodes_custom_filter( $tag_value , $user_id ) {
 			ob_start();
 ?>
 		<p style="text-align: center; margin-top: 30px; margin-bottom: 0px; padding-bottom: 22px;">
-			<a href="<?php echo $url?>" class="tps-button" style="font-size: 12px; text-transform: uppercase; color: #f2f2f2; background-color: #219665; display: inline-block; text-decoration: none; height: 34px; padding: 6px 28px 0px 28px;border-radius: 20px; letter-spacing: 0.4px;"><?php echo $caption?></a>
+			<a href="<?php echo $url?>" class="tps-button" style="font-size: 12px; text-transform: uppercase; color: #f2f2f2; background-color: #219665; display: inline-block; text-decoration: none; height: 33px; padding: 7px 28px 0px 28px;border-radius: 20px; letter-spacing: 0.4px;"><?php echo $caption?></a>
 		</p>
 <?php
 			$replacement = ob_get_clean();
