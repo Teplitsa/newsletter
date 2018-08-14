@@ -42,7 +42,7 @@
     /* Yahoo paragraph fix
     Bring inline: Yes. */
     p {
-        font-family: "{#body.family}";
+        font-family: {#body.family}, Arial;
         font-size: {#body.size}px;
         line-height: 150%;
         margin: 1em 0;
@@ -61,7 +61,7 @@
     h1 {
         color:{#h1.color|color} !important;
         display:block;
-        font-family:{#h1.family};
+        font-family:{#h1.family}, Arial;
         font-size:{#h1.size}px;
         font-style:normal;
         font-weight:normal;
@@ -76,7 +76,7 @@
     h2 {
         color:{#h2.color|color} !important;
         display:block;
-        font-family:{#h2.family};
+        font-family:{#h2.family}, Arial;
         font-size:{#h2.size}px;
         font-style:normal;
         font-weight:normal;
@@ -91,7 +91,7 @@
     h3 {
         color:{#h3.color|color} !important;
         display:block;
-        font-family:{#h3.family};
+        font-family:{#h3.family}, Arial;
         font-size:{#h3.size}px;
         font-style:normal;
         font-weight:normal;
@@ -122,7 +122,7 @@
     {#wysija_container} {
         background:{#html.background|color};
         color:{#body.color|color};
-        font-family:"{#body.family}";
+        font-family:{#body.family}, Arial;
         font-size:{#body.size}px;
         -webkit-text-size-adjust:100%;
         -ms-text-size-adjust:100%;
@@ -155,7 +155,7 @@
     }
 
     {#viewbrowser_container}, {#viewbrowser_container} a {
-        font-family: "{#viewbrowser.family}" !important;
+        font-family: "{#viewbrowser.family}, Arial" !important;
         font-size: {#viewbrowser.size}px !important;
         color: {#viewbrowser.color|color} !important;
     }
@@ -217,11 +217,11 @@
     }
     
     .tps-button {
-        font-family: {#h1.family};
+        font-family: {#h1.family}, Arial;
     }
     
     .tst-footer-short-description {
-        font-family: "{#body.family}";
+        font-family: {#body.family}, Arial;
     }
 
     /* MOBILE TARGETING */
