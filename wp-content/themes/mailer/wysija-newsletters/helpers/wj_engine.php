@@ -1481,6 +1481,7 @@ class WYSIJA_help_wj_engine extends WYSIJA_object {
 							'text-align' => 'center',
 							'padding' => '0px',
 							'margin' => '0px',
+							'letter-spacing' => '0.2px',
 						)
 					)
 				);
