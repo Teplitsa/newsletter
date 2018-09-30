@@ -63,7 +63,9 @@ a {
 unsubscribe {
     font-family:  Arial; 
     color:#219665;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: bold;
     text-transform: uppercase;
+    padding-top: 0px !important;
+    margin-top: 0px !important;
 }
