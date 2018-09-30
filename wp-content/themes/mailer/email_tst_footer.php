@@ -8,7 +8,7 @@
     <span style="display: block;float:none;clear:both;line-height: 1px;"></span>
 </span>
 
-<span class="tst-footer-short-description" style="display: block;text-align:center;text-transform:uppercase;margin-top:0px;font-size:12px;color:#7c8284;">
+<span class="tst-footer-short-description" style="display: block;text-align:center;text-transform:uppercase;margin-top:8px;font-size:14px;line-height:16px;color:#7c8284;font-weight:bold;">
 Теплица социальных технологий. Наши лучшие материалы для вас.
 </span>
 

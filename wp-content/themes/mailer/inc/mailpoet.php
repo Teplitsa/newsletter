@@ -189,8 +189,8 @@ function tst_mailpoet_shortcodes_custom_filter( $tag_value , $user_id ) {
 		<?php if($pic):?>
 			<img src="<?php echo $pic?>" style="max-width: 32px; max-height: 32px; margin-right: 10px; border-radius: 50%; float:left;" />
 		<?php endif?>
-			<span style="float: left; display:block; font-size: 12px; line-height: 14px; text-transform: uppercase;">
-				<span style="color: #7c8284; font-weight: 400; padding-top: 2px; display:block;"><?php echo $name?></span>
+			<span style="float: left; display:block; font-size: 14px; line-height: 16px; text-transform: uppercase; font-weight: bold;">
+				<span style="color: #7c8284; padding-top: 2px; display:block;"><?php echo $name?></span>
 				<span style="color: #bbc1c5; display:block; padding-top: 1px;"><?php echo $position?></span>
 			</span>
 			<br style="float:none; clear:both;"/>
@@ -212,8 +212,8 @@ function tst_mailpoet_shortcodes_custom_filter( $tag_value , $user_id ) {
 		if($caption && $url) {
 			ob_start();
 ?>
-		<p style="text-align: center; margin-top: 30px; margin-bottom: 0px; padding-bottom: 22px;">
-			<a href="<?php echo $url?>" class="tps-button" style="font-size: 12px; text-transform: uppercase; color: #f2f2f2; background-color: #219665; display: inline-block; text-decoration: none; height: 33px; padding: 7px 28px 0px 28px;border-radius: 20px; letter-spacing: 0.4px;"><?php echo $caption?></a>
+		<p style="text-align: center; margin-top: 30px; margin-bottom: -15px; padding-bottom: 22px;">
+			<a href="<?php echo $url?>" class="tps-button" style="font-size: 14px; line-height: 16px; text-transform: uppercase; color: #f2f2f2; background-color: #219665; display: inline-block; text-decoration: none; height: 32px; padding: 16px 28px 0px 28px;border-radius: 24px; letter-spacing: 0.4px;"><?php echo $caption?></a>
 		</p>
 <?php
 			$replacement = ob_get_clean();

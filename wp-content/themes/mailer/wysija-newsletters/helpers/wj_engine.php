@@ -1404,7 +1404,7 @@ class WYSIJA_help_wj_engine extends WYSIJA_object {
 					'h1' => array_merge($styles['titles'], $this->getStyles('h1')),
 					'h2' => array_merge($styles['titles'], $this->getStyles('h2')),
 					'h3' => array_merge($styles['titles'], $this->getStyles('h3')),
-					'p' => array_merge($this->getStyles('body'), array('word-wrap' => true, 'padding' => '0', 'margin' => '1em 0', 'line-height' => '1.5em', 'vertical-align' => 'top', 'letter-spacing' => 'normal')),
+					'p' => array_merge($this->getStyles('body'), array('word-wrap' => true, 'padding' => '0', 'margin' => '1em 0', 'line-height' => '1.8em', 'vertical-align' => 'top', 'letter-spacing' => 'normal')),
 					'li' => array_merge($this->getStyles('body'), array('word-wrap' => true, 'padding' => '0', 'margin' => '0', 'line-height' => '1.5em', 'vertical-align' => 'top', 'letter-spacing' => 'normal')),
 					'a' => array_merge($this->getStyles('a'), array('word-wrap' => true)),
 					'br' => array('margin' => '0', 'padding' => '0', 'line-height' => '150%')
