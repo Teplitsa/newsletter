@@ -1479,7 +1479,8 @@ class WYSIJA_help_wj_engine extends WYSIJA_object {
 							'family' => 'Verdana',
 							'size' => '12',
 							'text-align' => 'center',
-							'padding' => '8px'
+							'padding' => '0px',
+							'margin' => '0px',
 						)
 					)
 				);
