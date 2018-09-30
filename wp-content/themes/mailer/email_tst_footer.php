@@ -10,7 +10,7 @@
 
 <span style="display: block;float:none;clear:both;line-height: 10px; height: 10px;"></span>
 
-<span class="tst-footer-short-description" style="display:block; padding-top:0px; text-align:center; text-transform:uppercase; font-size:14px;line-height:16px;color:#7c8284;font-weight:bold;">
+<span class="tst-footer-short-description" style="letter-spacing: 0.3px; display:block; padding-top:0px; text-align:center; text-transform:uppercase; font-size:14px;line-height:16px;color:#7c8284;font-weight:bold;">
 Теплица социальных технологий. Наши лучшие материалы для вас.
 </span>
 
