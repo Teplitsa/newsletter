@@ -7,3 +7,60 @@ Description: Teplitsa website design
 License: GNU General Public License
 
 **/
+
+/* custom file input */
+.mdl-textfield--file .mdl-button--icon.mdl-button--file {
+}
+
+.mdl-textfield--file .mdl-textfield__input {
+  line-height: 20px;
+  padding: 4px 0;
+  line-height: 1;
+  font-size: 100%;
+  display: inline-block;
+  vertical-align: baseline;
+  margin-right: 1rem;
+  width: calc(100% - 40px - 1rem);
+}
+
+.mdl-textfield--file .mdl-textfield__input:disabled {
+    border: none;
+    background: none;
+    border-bottom: 2px solid #d4d4d4;
+    color: rgba(0,0,0, 0.8);  
+    display: inline-block;
+}
+
+.mdl-textfield--file .mdl-textfield__input::placeholder {
+    color: #d4d4d4;
+    opacity: 1;
+}
+
+.mdl-textfield--file .mdl-textfield__input:-ms-input-placeholder {
+    color: #d4d4d4;
+}
+
+.mdl-textfield--file .mdl-textfield__input::-ms-input-placeholder {
+    color: #d4d4d4;
+}
+
+.mdl-textfield--file .material-icons {
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  background-color: #32b945;
+  color: #ffffff;
+  border-radius: 50%;
+  text-align: center;
+  display: inline-block;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+.mdl-textfield--file .material-icons span {
+  vertical-align: text-bottom;
+}
+
+.mdl-textfield--file input[type=file] {
+  display: none;
+}

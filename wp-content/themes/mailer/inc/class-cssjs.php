@@ -82,6 +82,13 @@ class TST_CssJs {
 			null
 		);
 
+        wp_enqueue_style(
+			'tst-design-hotfix',
+			$url.'/style.css',
+			$style_dependencies,
+			'0.001'
+		);
+
 		wp_dequeue_style('leyka-plugin-styles');		
 	}
 
