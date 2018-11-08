@@ -9,7 +9,8 @@ License: GNU General Public License
 **/
 
 /* custom file input */
-.mdl-textfield--file .mdl-button--icon.mdl-button--file {
+.mdl-textfield--file {
+    padding-bottom: 28px;
 }
 
 .mdl-textfield--file .mdl-textfield__input {
@@ -19,8 +20,8 @@ License: GNU General Public License
   font-size: 100%;
   display: inline-block;
   vertical-align: baseline;
-  margin-right: 1rem;
-  width: calc(100% - 40px - 1rem);
+  margin-right: 16px;
+  width: calc(100% - 56px);
 }
 
 .mdl-textfield--file .mdl-textfield__input {
@@ -56,6 +57,7 @@ License: GNU General Public License
   display: inline-block;
   vertical-align: middle;
   cursor: pointer;
+  padding-top: 2px;
 }
 
 .mdl-textfield--file .material-icons span {

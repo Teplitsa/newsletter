@@ -61,8 +61,8 @@ class TST_CssJs {
 	function load_styles() {
 
 		$url = get_template_directory_uri();
-		$style_dependencies = array();
-
+		$style_dependencies = array('dashicons');
+        
 		// fonts
 		//fonts.googleapis.com/css?family=Open+Sans:400,300italic,400italic,600,700,700italic&subset=latin,cyrillic
 		//<link href='https://fonts.googleapis.com/css?family=Lato:400,300,700,900' rel='stylesheet' type='text/css'>
@@ -86,7 +86,7 @@ class TST_CssJs {
 			'tst-design-hotfix',
 			$url.'/style.css',
 			$style_dependencies,
-			'0.002'
+			'0.005'
 		);
 
 		wp_dequeue_style('leyka-plugin-styles');		
