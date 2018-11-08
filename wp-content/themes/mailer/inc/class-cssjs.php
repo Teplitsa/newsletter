@@ -86,7 +86,7 @@ class TST_CssJs {
 			'tst-design-hotfix',
 			$url.'/style.css',
 			$style_dependencies,
-			'0.001'
+			'0.002'
 		);
 
 		wp_dequeue_style('leyka-plugin-styles');		

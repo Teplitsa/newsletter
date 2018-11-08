@@ -23,7 +23,7 @@ License: GNU General Public License
   width: calc(100% - 40px - 1rem);
 }
 
-.mdl-textfield--file .mdl-textfield__input:disabled {
+.mdl-textfield--file .mdl-textfield__input {
     border: none;
     background: none;
     border-bottom: 2px solid #d4d4d4;

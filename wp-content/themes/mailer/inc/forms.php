@@ -98,7 +98,7 @@ function tst_formidable_default_html($html, $field, $params) {
             $id = esc_attr($field['id']);
             //frm_field_95_container
                         
-            $html ='<div id="frm_field_'.$id.'_container" class="mdl-textfield mdl-js-textfield mdl-textfield--file mdl-textfield--full-width frm_form_field form-field  frm_top_container is-disabled"><input class="mdl-textfield__input" placeholder="'.$label.'" type="text" class="uploadFile" disabled="disabled"/><i class="material-icons"><span class="dashicons dashicons-paperclip"></span></i>'.$input.'';
+            $html ='<div id="frm_field_'.$id.'_container" class="mdl-textfield mdl-js-textfield mdl-textfield--file mdl-textfield--full-width frm_form_field form-field  frm_top_container is-disabled"><input class="mdl-textfield__input" placeholder="'.$label.'" type="text" class="uploadFile" readonly="readonly"/><i class="material-icons"><span class="dashicons dashicons-paperclip"></span></i>'.$input.'';
             if(isset($params['errors']['field'.$id])){
                 $html .= '<div class="frm_error">Некорректный формат файла.</div>';
             }
