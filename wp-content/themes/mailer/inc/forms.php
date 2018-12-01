@@ -62,10 +62,10 @@ function tst_formidable_default_html($html, $field, $params) {
     }   
     elseif($field['type'] == 'checkbox'){
         if(isset($field['classes']) && false !== strpos($field['classes'], 'switch')){          
-            $html = str_replace('<label for=', '<label class="tst-checkbox" for=', $html);
+            $html = str_replace('><label for=', '><label class="tst-checkbox" for=', $html);
         }
         else {
-            $html = str_replace('<label for=', '<label class="tst-checkbox" for=', $html);
+            $html = str_replace('><label for=', '><label class="tst-checkbox" for=', $html);
         }
         
         $html = str_replace('frm_form_field', 'tst-inputfix frm_form_field', $html);
@@ -74,8 +74,8 @@ function tst_formidable_default_html($html, $field, $params) {
     }
     elseif($field['type'] == 'radio'){
         
-        $html = str_replace('<label for=', '<label class="tst-radio" for=', $html);
         $html = str_replace('frm_primary_label', 'tst-inputfix__label frm_primary_label', $html);
+        $html = str_replace('><label for=', '><label class="tst-radio" for=', $html);
         $html = str_replace('frm_form_field', 'tst-inputfix frm_form_field', $html);
     }
     elseif($field['type'] == 'select'){

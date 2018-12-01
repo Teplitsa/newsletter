@@ -67,3 +67,8 @@ License: GNU General Public License
 .mdl-textfield--file input[type=file] {
   display: none;
 }
+
+/* radio */
+.tst-inputfix.frm_top_container.vertical_radio {
+    padding-top: 0px;
+}
