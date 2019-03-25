@@ -91,6 +91,7 @@ require get_template_directory().'/inc/class-cssjs.php';
 
 require get_template_directory().'/inc/extras.php';
 require get_template_directory().'/inc/mailpoet.php';
+require get_template_directory().'/inc/mailpoet-v3.php';
 require get_template_directory().'/inc/template-tags.php';
 
 if(is_admin()){
