@@ -14,9 +14,9 @@ function mailpoet_tst_form_screen($atts) {
     if($id <= 0)
         return '';
 
-    $out = "<div class='tst-mailpoet-form'>1";
+    $out = "<div class='tst-mailpoet-form'>";
     $out .= tst_mailpoet_subscribtion_form($id);
-    $out .= "</div>2";
+    $out .= "</div>";
 
     return $out;
 }

@@ -1,4 +1,21 @@
 /* Scripts */
+
+/** Custom event listener **/
+(function(){
+
+	var originalAddClassMethod = jQuery.fn.show;
+
+	jQuery.fn.show = function(){
+
+		var result = originalAddClassMethod.apply( this, arguments );
+
+		jQuery(this).trigger('formSuccess');
+
+		return result;
+	}
+})();
+
+
 jQuery(document).ready(function($){
 	
 	
@@ -24,5 +41,13 @@ jQuery(document).ready(function($){
 		}
 		
 	});
-	
+
+	$(".mailpoet_validate_success").bind('formSuccess', function(){
+
+		$(".tst-mailpoet-form").html('<div class="wysija-msg"><div class="updated"><ul><li>Проверьте Ваш почтовый ящик (если не найдете – то поищите в папке "спам").</li></ul></div></div>');
+		$('html, body').animate({scrollTop: 0}, 900);
+
+	});
+
 }); //jQuery
+
