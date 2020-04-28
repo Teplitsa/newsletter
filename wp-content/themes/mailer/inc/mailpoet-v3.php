@@ -29,23 +29,22 @@ function tst_mailpoet_subscribtion_form($form_id){
     $form_widget = new \MailPoet\Form\Widget();
     $form_html = $form_widget->widget(array('form' => $form_id, 'form_type' => 'php'));
     $form_html = preg_replace('/<style(.*?)<\/style>/s', "", $form_html);
+    $form_html = str_replace('" >', '">', $form_html);
 
-    preg_match_all('/<p class=\"mailpoet_paragraph\">(.*?)<\/p>/s',$form_html, $m);
+    preg_match_all('/(<div class=\"mailpoet_paragraph\">(.*?)<\/div>)/s',$form_html, $m);
     if(isset($m[1]) && !empty($m[1])){
         foreach($m[1] as $c_box){
             if(preg_match('/<label class=\"mailpoet_checkbox_label\"><input(.*?)<\/label>/s', $c_box, $ml)) {
-                $c_box_new = str_replace("mailpoet_paragraph", "mailpoet_paragraph tst-agree-pd-paragraph", $c_box);
-                $form_html = str_replace($c_box, $c_box_new, $form_html);
                 $label = strip_tags($ml[0]);
                 if(!empty($label)){
                     $c_box_new = str_replace($label, "<span class=\"mailpoet_tst_checkbox\">{$label}</span>", $c_box);
-                    $form_html = str_replace($c_box, $c_box_new, $form_html);
+                    $form_html = str_replace($c_box, $c_box_new, $form_html, $n);
                 }
             }
         }
     }
 
-    preg_match_all('/(<p class=\"mailpoet_paragraph\">.*?<\/p>)/s',$form_html, $m);
+    preg_match_all('/(<div class=\"mailpoet_paragraph\">.*?<\/div>)/s',$form_html, $m);
     if(isset($m[1]) && !empty($m[1])){
         foreach($m[1] as $c_box){
             if(preg_match('/<label class=\"mailpoet_checkbox_label\"><input(.*?)<\/label>/s', $c_box)) {
