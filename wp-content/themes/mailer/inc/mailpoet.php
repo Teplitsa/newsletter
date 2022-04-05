@@ -232,7 +232,9 @@ function newsletter_mailpoet_itv_custom_content($shortcode, $newsletter, $subscr
 {
     if ($shortcode !== '[custom:itv-custom-content]') return $shortcode; 
     
+    $subscriptionUrlFactory = \MailPoet\Subscription\SubscriptionUrlFactory::getInstance();
     $subscriber_first_name = $subscriber->getFirstName();
+    $link_subscription_manage_url = $subscriptionUrlFactory->getManageUrl($subscriber);
     
     $html = <<<EOT
     
@@ -261,7 +263,7 @@ function newsletter_mailpoet_itv_custom_content($shortcode, $newsletter, $subscr
 </p>
 
 <h4 style="margin: 0; padding: 0; font-size: 100%; vertical-align: baseline; text-decoration: none; display: inline-block; border-radius: 8px; box-shadow: inset -1px -1px 1px rgba(0,89,56,0.53); width: 389px; background-color: #0ea36c; border: none; color: #fff; margin-top: 32px; text-align: center;"><a href="https://forms.gle/ZuLCTLxThvRT4tdg6" style="margin: 0; padding: 0; border: 0; vertical-align: baseline; text-decoration: none; font-family: Helvetica, Arial, 'Lucida Grande', sans-serif; font-size: 24px; line-height: 28px; font-weight: normal; font-style: normal; color: #fff; display: block; width: 100%; padding-top: 16px; padding-bottom: 16px;">Пройти опрос</a></h4>
-<p style="margin: 0; padding: 0; border: 0; font-size: 100%; vertical-align: baseline; line-height:150%; font-family: Helvetica, Arial, 'Lucida Grande', sans-serif; margin-top: 16px; text-align: center;">Письма будут приходить раз в неделю со следующего понедельника. Если вы не хотите получать рассылку — нажмите <a href="[link:subscription_manage_url]" style="margin: 0; padding: 0; border: 0; font-size: 100%; vertical-align: baseline;">отписаться</a>, и я вас не побеспокою.</p>
+<p style="margin: 0; padding: 0; border: 0; font-size: 100%; vertical-align: baseline; line-height:150%; font-family: Helvetica, Arial, 'Lucida Grande', sans-serif; margin-top: 16px; text-align: center;">Письма будут приходить раз в неделю со следующего понедельника. Если вы не хотите получать рассылку — нажмите <a href="{$link_subscription_manage_url}" style="margin: 0; padding: 0; border: 0; font-size: 100%; vertical-align: baseline;">отписаться</a>, и я вас не побеспокою.</p>
 
 
 
